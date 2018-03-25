@@ -1,5 +1,4 @@
 {
-  "include": [ "**/*.ts", "../node_modules/angular-bootstrap-md/index.ts" ],
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
