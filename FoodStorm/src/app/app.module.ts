@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { AlertModule,CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 
 
 import { AppComponent } from './app.component';
@@ -21,9 +19,8 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
     BrowserModule,
     FormsModule,
     BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot()
-
+    AlertModule.forRoot(),
+    CollapseModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
