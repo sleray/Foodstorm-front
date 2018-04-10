@@ -9,13 +9,15 @@ import { IngredientComponent } from './ingredient/ingredient.component';
 import { RecetteComponent } from './recette/recette.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { SigninComponent } from './signin/signin.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { HomeConnectionComponent } from './home-connection/home-connection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IngredientComponent, 
-    RecetteComponent, IngredientsComponent, SigninComponent
+    RecetteComponent, IngredientsComponent, SigninComponent, ForgotPasswordComponent, HomeConnectionComponent
   ],
   imports: [
     BrowserModule,
