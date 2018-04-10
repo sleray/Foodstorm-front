@@ -9,7 +9,7 @@ import { HomeConnectionComponent } from './home-connection/home-connection.compo
 const routes: Routes = [
   { path: 'forgotPassword', component: ForgotPasswordComponent },  
   { path: 'signin', component: SigninComponent, },
-  { path: '', component: HomeConnectionComponent,  pathMatch: 'full' }
+  { path: '', component: SigninComponent,  pathMatch: 'full' }
 ];
 
 @NgModule({
