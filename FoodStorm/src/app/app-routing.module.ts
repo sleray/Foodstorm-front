@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { HomeConnectionComponent } from './home-connection/home-connection.component';
 
 const routes: Routes = [
   { path: 'forgotPassword', component: ForgotPasswordComponent },  
