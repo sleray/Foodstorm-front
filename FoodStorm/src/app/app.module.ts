@@ -11,12 +11,13 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { SigninComponent } from './signin/signin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IngredientComponent, 
-    RecetteComponent, IngredientsComponent, SigninComponent, ForgotPasswordComponent
+    RecetteComponent, IngredientsComponent, SigninComponent, ForgotPasswordComponent, WelcomeComponent
   ],
   imports: [
     BrowserModule,
