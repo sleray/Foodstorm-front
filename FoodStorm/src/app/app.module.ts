@@ -8,12 +8,11 @@ import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SigninComponent, 
-    ForgotPasswordComponent
+    AppComponent, SigninComponent, ForgotPasswordComponent, WelcomeComponent
   ],
   imports: [
     BrowserModule,
