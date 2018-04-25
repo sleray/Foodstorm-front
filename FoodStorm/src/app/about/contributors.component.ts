@@ -8,7 +8,7 @@ import { IContributor } from './Contributor';
   styleUrls: ['./contributors.component.scss']
 })
 export class ContributorsComponent implements OnInit {
-
+  pageTitle : string = 'Contributeurs du projet Foodstorm';
   contributors : IContributor[];
   errorMessage: string;
   constructor(private _contributorService : ContributorsService) { }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AlertModule,CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
+import { AlertModule, CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 
 
 import { AppComponent } from './app.component';
