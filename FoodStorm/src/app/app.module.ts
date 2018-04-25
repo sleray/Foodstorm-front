@@ -9,6 +9,8 @@ import { SigninComponent } from './signin/signin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { AboutModule } from './about/about.module';
+import { SigninService } from './signin/signin.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
     CollapseModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    AboutModule
   ],
-  providers: [],
+  providers: [SigninService],
   bootstrap: [AppComponent],
   schemas: [  ]
 })
