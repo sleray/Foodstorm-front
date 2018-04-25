@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ContributorsService } from './contributors.service';
+import { IContributor } from './Contributor';
 
 @Component({
   selector: 'app-contributors',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContributorsComponent implements OnInit {
 
-  constructor() { }
+  contributors : IContributor[];
+  errorMessage: string;
+  constructor(private _contributorService : ContributorsService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit(): void {
+    this._contributorService.getContributors()
+            .subscribe(contributors => {
+                this.contributors = contributors;
+
+            },
+                error => this.errorMessage = <any>error);
+}
 
 }

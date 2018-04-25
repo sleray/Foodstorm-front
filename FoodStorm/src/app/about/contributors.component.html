@@ -1,3 +1,41 @@
-<p>
-  contributors works!
-</p>
+<div class='panel panel-primary' *ngIf='product'>
+    <div class='panel-heading'>
+        {{pageTitle + ': ' + product.productName}}
+    </div>
+
+    <div class='panel-body'  *ngFor='let contributor of contributors'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>Nom :</div>
+                    <div class='col-md-6'>{{contributor.name}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Employeur actuel :</div>
+                    <div class='col-md-6'>{{contributor.work}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Roles dans l'équipe :</div>
+                    <div class='col-md-6'>{{contributor.roles}}</div>
+                </div> <div class='row'>
+                    <div class='col-md-3'>Twitter :</div>
+                    <div class='col-md-6'>{{contributor.Twitter}}</div>
+                </div>
+                
+
+            <div class='col-md-6'>
+                <img class='center-block img-responsive' 
+                     [style.width.px]='200' 
+                     [style.margin.px]='2' 
+                     [src]='contributor.imageUrl'
+                     [title]='contributor.name'>
+            </div>
+        </div>
+    </div>
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+    </div>
+</div>
