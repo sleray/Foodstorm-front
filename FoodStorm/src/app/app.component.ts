@@ -12,11 +12,12 @@ export class AppComponent implements OnInit {
  
 
   constructor(private _ss: SigninService) {
-    _ss.connectedUser = null;
+ 
 
 
   }
 
+  
 
 
   ngOnInit() {
