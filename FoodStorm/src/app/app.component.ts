@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SigninService } from './signin/signin.service';
 
 @Component({
@@ -8,19 +8,21 @@ import { SigninService } from './signin/signin.service';
 })
 export class AppComponent implements OnInit {
   pageTitle: string = 'FoodStorm beta';
- 
- 
+
+
 
   constructor(private _ss: SigninService) {
- 
+
 
 
   }
 
-  
+  getSignService(){
+    return this._ss;
+  }
 
 
   ngOnInit() {
- 
-}
+
   }
+}

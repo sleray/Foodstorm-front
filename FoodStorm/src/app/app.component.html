@@ -1,6 +1,6 @@
 
 <!-- Show menu if a user is connected-->
-<div *ngIf=_ss.getConnectedUser()>
+<div *ngIf=getSignService().getConnectedUser()>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">{{pageTitle}}</a>
