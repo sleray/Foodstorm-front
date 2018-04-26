@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContributorsService } from './contributors.service';
-import { IContributor } from './Contributor';
+import { IContributor } from './contributor';
 
 @Component({
   selector: 'app-contributors',
