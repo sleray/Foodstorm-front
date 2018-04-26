@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class AuthinterceptorService {
+export class AuthInterceptor implements HttpInterceptor {
 
   constructor(public authService : SigninService) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
