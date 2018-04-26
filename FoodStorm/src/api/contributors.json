@@ -1,21 +1,64 @@
 [
     {
         "name": "Sylvain Leray",
-        "roles": ["Product Owner","Front-End Developer","Back-End Developer","Devops","Team Leader", "Projet initiator"],
+        "roles": [
+            {"label":"Product Owner",
+             "type": "primary"   
+            },
+            {"label":"Back end developer",
+             "type": "primary"   
+            },
+            {"label":"Front end developer",
+             "type": "primary"   
+            },
+            {"label":"Devops",
+             "type": "secondary"   
+            },
+            {"label":"Team leader",
+             "type": "primary"   
+            },
+            {"label":"Project initiator",
+             "type": "secondary"   
+            }
+        ],             
         "work": "Sogeti - Nantes",
         "twitterUrl": "www.twitter.com/sylvainleray",   
         "imageUrl": "https://image.freepik.com/free-icon/man-dark-avatar_318-9118.jpg"
     },
     {
         "name": "Jean-Philippe Etrillard",
-        "roles": ["Front-End Developer","Back-End Developer","Devops","Core team member"],
+        "roles": [
+           
+            {"label":"Back end developer",
+             "type": "primary"   
+            },
+            {"label":"Front end developer",
+             "type": "primary"   
+            },
+            {"label":"Devops",
+             "type": "secondary"   
+            },
+            {"label":"Core Team member",
+             "type": "primary"   
+            }
+        ],
         "work": "Cap Gemini FS - Nantes",
         "twitterUrl": "www.twitter.com/", 
         "imageUrl": "https://image.freepik.com/free-icon/man-dark-avatar_318-9118.jpg"
     },
     {
         "name": "Bérengère Gobin",
-        "roles": ["Front-End Developer","Back-End Developer","Core team member"],
+        "roles": [
+            {"label":"Back end developer",
+             "type": "primary"   
+            },
+            {"label":"Front end developer",
+             "type": "primary"   
+            },    
+            {"label":"Core Team Member",
+             "type": "primary"   
+            }
+        ],
         "work": "Cap Gemini CSD - Nantes",
         "twitterUrl": "www.twitter.com/", 
         "imageUrl": "https://image.freepik.com/free-icon/female-science-expert-with-eyeglasses_318-56656.jpg"
