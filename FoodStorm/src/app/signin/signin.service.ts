@@ -1,27 +1,58 @@
-import {Component, Injectable} from '@angular/core'
+import { Component, Injectable } from '@angular/core'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { IMember } from '../core/member';
+import { jwt_decode } from 'jwt-decode'
 
-
+export const TOKEN_NAME: string = 'token';
 
 
 @Injectable()
 export class SigninService {
- 
+  private url: string = 'auth/sign-in';
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    connectedUser: string;
+  connectedUser: IMember;
 
-   constructor() {
-     console.log('signin service started');
-   }
+  constructor(private http: HttpClient) {
+  }
+  setSession(authResult){
+    this.connectedUser = authResult;
+    this.setToken(this.connectedUser.token);
+  }
+  login(login: string, passwd: string ){
+    return this.http.post<IMember>(this.url, {login, passwd},{ headers: this.headers })
+    .toPromise().then(res => this.setSession);
+  }
+  logout() {
+    localStorage.removeItem(TOKEN_NAME);
+    this.connectedUser = undefined;
+  }
+  getTokenExpirationDate(token: string): Date {
+    const decoded = jwt_decode(token);
 
-   connectionAttemp(login : string) {
-    console.log('login called'); 
-    
-     this.connectedUser = login;
+    if (decoded.exp === undefined) return null;
 
-   }
+    const date = new Date(0);
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
 
-   getConnectedUser() {
-     return this.connectedUser;
-   }
+  isTokenExpired(token?: string): boolean {
+    if (!token) token = this.getToken();
+    if (!token) return true;
 
+    const date = this.getTokenExpirationDate(token);
+    if (date === undefined) return false;
+    return !(date.valueOf() > new Date().valueOf());
+  }
+  getConnectedUser() {
+    return this.connectedUser;
+  }
+  getToken(): string {
+    return localStorage.getItem(TOKEN_NAME);
+  }
+
+  setToken(token: string): void {
+    localStorage.setItem(TOKEN_NAME, token);
+  }
 } 

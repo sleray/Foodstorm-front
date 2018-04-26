@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModule,CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 
 
@@ -11,6 +11,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutModule } from './about/about.module';
 import { SigninService } from './signin/signin.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,15 @@ import { SigninService } from './signin/signin.service';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
     CollapseModule.forRoot(),
     AppRoutingModule,
-    AboutModule
+    AboutModule,
+    HttpClientModule
   ],
-  providers: [SigninService],
+  providers: [SigninService,HttpClientModule],
   bootstrap: [AppComponent],
   schemas: [  ]
 })
