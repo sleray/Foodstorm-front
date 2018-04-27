@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { RandomMenuComponent } from './random-menu/random-menu.component';
 
 const routes: Routes = [
   { path: 'forgotPassword', component: ForgotPasswordComponent },  
   { path: 'signin', component: SigninComponent, },
+  { path: 'randomMenu', component: RandomMenuComponent, },
   { path: '', component: SigninComponent,  pathMatch: 'full' }
 ];
 

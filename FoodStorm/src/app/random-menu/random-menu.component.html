@@ -1,0 +1,6 @@
+<h1>Liste des Ingrédients</h1>
+<ul>
+  <li *ngFor="let ingredient of ingredients"> {{ingredient.name}}</li>
+</ul>
+
+<button type="submit" (click)="genererMenu()" >Générer son Menu</button>
