@@ -11,6 +11,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutModule } from './about/about.module';
 import { SigninService } from './signin/signin.service';
+import { AdministrationModule } from './administration/administration.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,16 @@ import { SigninService } from './signin/signin.service';
     AlertModule.forRoot(),
     CollapseModule.forRoot(),
     AppRoutingModule,
-    AboutModule
+    AboutModule,
+    AdministrationModule
   ],
   providers: [SigninService],
   bootstrap: [AppComponent],
-  schemas: [  ]
+  schemas: [  ],
+  exports:[
+    CommonModule,
+    FormsModule,
+    AppRoutingModule
+  ]
 })
 export class AppModule { }

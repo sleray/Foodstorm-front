@@ -1,0 +1,41 @@
+<div class='container'>
+<div class='card card-primary shadow' *ngIf='ingredient'>
+  <div class='card-heading'>
+     <h2> {{pageTitle + ingredient.name}}</h2>
+  </div>
+
+  <div class='card-body border shadow'>
+      <div class='row'>
+          <div class='col-md-6'>
+              <div class='row'>
+                  <div class='col-md-3'>Nom:</div>
+                  <div class='col-md-6'>{{ingredient.name}}</div>
+              </div>
+              <div class='row'>
+                  <div class='col-md-3'>Type:</div>
+                  <div class='col-md-6'>{{ingredient.type.name}}</div>
+              </div>
+              <div class='row'>
+                  <div class='col-md-3'>Groupe:</div>
+                  <div class='col-md-6'>{{ingredient.groups}}</div>
+              </div>
+              
+          </div>
+
+          <div class='col-md-6'>
+              <img class='center-block img-responsive' 
+                   [style.width.px]='200' 
+                   [style.margin.px]='2' 
+                   [src]='ingredient.imageUrl'
+                   [title]='ingredient.name'>
+          </div>
+      </div>
+  </div>
+
+  <div class='card-footer'>
+      <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+          <i class='glyphicon glyphicon-chevron-left'></i> Back
+      </a>
+  </div>
+</div>
+</div>
