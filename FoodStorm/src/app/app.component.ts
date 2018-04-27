@@ -1,4 +1,5 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SigninService } from './signin/signin.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,22 @@ import { Component, OnInit  } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  // life hook cycle
-  ngOnInit(){}
+  pageTitle: string = 'FoodStorm beta';
+
+
+
+  constructor(private _ss: SigninService) {
+
+
+
+  }
+
+  getSignService(){
+    return this._ss;
+  }
+
+
+  ngOnInit() {
+
+  }
 }
