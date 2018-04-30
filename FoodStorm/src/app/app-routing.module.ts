@@ -8,6 +8,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ContributorsComponent } from './about/contributors.component';
 import { IngredientListComponent } from './administration/ingredient-list.component';
 import { IngredientDetailComponent } from './administration/ingredient-detail.component';
+import { RandomMenuComponent } from './random-menu/random-menu.component';
 
 const routes: Routes = [  
   { path: 'welcome', component: WelcomeComponent },  
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'about/contributors', component: ContributorsComponent },
   { path: 'admin/ingredients', component: IngredientListComponent },
   { path: 'ingredients/:id',  component: IngredientDetailComponent },
+  { path: 'randomMenu',  component: RandomMenuComponent },
   { path: '', component: SigninComponent,  pathMatch: 'full' }
 ];
 

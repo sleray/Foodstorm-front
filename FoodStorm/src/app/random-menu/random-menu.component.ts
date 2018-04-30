@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomMenuService } from '../random-menu.service';
+import { IngredientService } from '../administration/ingredient.service';
 
 @Component({
   selector: 'app-random-menu',
@@ -8,16 +8,19 @@ import { RandomMenuService } from '../random-menu.service';
 })
 export class RandomMenuComponent implements OnInit {
 
-  public ingredients;
-
-  constructor(private randomMenuService: RandomMenuService) { }
+  private starter;
+  private mainCourse;
+  private accompaniment;
+  private dessert;
+  
+  constructor(private ingredientService: IngredientService) { }
 
 
   ngOnInit() {
   }
 
-  genererMenu(){
-    this.randomMenuService.getIngredients();
+  regenerateMenu(){   
+    console.log('regenerer un menu !!!!!!!!!') ;
   }
 
 }

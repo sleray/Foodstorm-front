@@ -13,7 +13,7 @@
                              aria-controls="basic-link-dropdown">Générer</a>
                           <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
                               role="menu" aria-labelledby="basic-link">
-                              <li role="menuitem" ><a class="dropdown-item disabled" >Menu aléatoire</a></li>
+                              <li role="menuitem" ><a class="dropdown-item" [routerLink]="['/randomMenu']" (click)="test()">Menu aléatoire</a></li>
                               <li role="menuitem" ><a class="dropdown-item disabled" >Menu de mon frigo</a></li>  
                               <li role="menuitem" ><a class="dropdown-item disabled" >Menus de la semaine</a></li>            
                           </ul>

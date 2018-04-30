@@ -12,11 +12,18 @@ import { IIngredient } from './ingredient';
 @Injectable()
 export class IngredientService {
     private _contribUrl = './api/ingredients.json';
+    private _randomMenuUrl = 'http://localhost:8080/foodstorm-back/ingredients/';
 
     constructor(private _http: HttpClient) { }
 
     getIngredients(): Observable<IIngredient[]> {
         return this._http.get<IIngredient[]>(this._contribUrl)
+            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+    // pour randomMenu
+    getIngredientsRandomMenu(): Observable<IIngredient[]> {
+        return this._http.get<IIngredient[]>(this._randomMenuUrl)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }

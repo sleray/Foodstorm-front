@@ -25,4 +25,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  test(){
+    console.log('test selection generer menu');
+    
+  }
 }

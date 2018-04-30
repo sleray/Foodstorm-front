@@ -14,10 +14,11 @@ import { SigninService } from './signin/signin.service';
 import { AdministrationModule } from './administration/administration.module';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
+import { RandomMenuComponent } from './random-menu/random-menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent, SigninComponent, ForgotPasswordComponent, WelcomeComponent
+    AppComponent, SigninComponent, ForgotPasswordComponent, WelcomeComponent, RandomMenuComponent
   ],
   imports: [
     BrowserModule,
