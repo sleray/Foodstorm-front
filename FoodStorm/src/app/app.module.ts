@@ -1,22 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AlertModule,CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
+import { AlertModule, CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
+
 
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { RandomMenuComponent } from './random-menu/random-menu.component';
-
+import { WelcomeComponent } from './welcome/welcome.component';
+import { AboutModule } from './about/about.module';
+import { SigninService } from './signin/signin.service';
+import { AdministrationModule } from './administration/administration.module';
+import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SigninComponent, 
-    ForgotPasswordComponent, RandomMenuComponent
+    AppComponent, SigninComponent, ForgotPasswordComponent, WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -24,11 +25,17 @@ import { RandomMenuComponent } from './random-menu/random-menu.component';
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
     CollapseModule.forRoot(),
-    HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AboutModule,
+    AdministrationModule
   ],
-  providers: [],
+  providers: [SigninService],
   bootstrap: [AppComponent],
-  schemas: [  ]
+  schemas: [  ],
+  exports:[
+    CommonModule,
+    FormsModule,
+    AppRoutingModule
+  ]
 })
 export class AppModule { }
