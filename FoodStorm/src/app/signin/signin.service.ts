@@ -1,9 +1,7 @@
 import { Component, Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IMember } from '../core/member';
-import { jwt_decode } from 'jwt-decode'
-import { resolve } from 'path';
-import { reject } from 'q';
+import * as jwt_decode from 'jwt-decode';
 
 export const TOKEN_NAME: string = 'token';
 
@@ -25,12 +23,8 @@ export class SigninService {
     .toPromise().then(res => {
       this.connectedUser = res;
       this.setToken(this.connectedUser.token);
-      resolve();
-    } ,
-    msg=>{
-      reject(msg);
-    }).catch(res =>{
-
+     }).catch(res =>{
+        console.log(res);
     });
   }
   logout() {
@@ -39,7 +33,7 @@ export class SigninService {
   }
   getTokenExpirationDate(token: string): Date {
     const decoded = jwt_decode(token);
-
+    console.log(decoded);
     if (decoded.exp === undefined) return null;
 
     const date = new Date(0);
@@ -50,7 +44,7 @@ export class SigninService {
   isTokenExpired(token?: string): boolean {
     if (!token) token = this.getToken();
     if (!token) return true;
-
+    console.log('token :' + token);
     const date = this.getTokenExpirationDate(token);
     if (date === undefined) return false;
     return !(date.valueOf() > new Date().valueOf());

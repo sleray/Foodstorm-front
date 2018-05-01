@@ -34,7 +34,12 @@ export class SigninComponent implements OnInit {
     console.log("Connection attemp from "+this.login+" with password :"+this.password+" (Security level = MAX)");
     //Easy login
    var toto = this._ss.login(this.login, Md5.hashStr(this.password).toString());
-   console.log(toto);
-   //this.router.navigate(['welcome']);
+   
+   if(this._ss.isTokenExpired()){
+      console.log("not connected");
+   }else{
+      console.log("connected");
+      this.router.navigate(['welcome']);
+   }
   }
 }
