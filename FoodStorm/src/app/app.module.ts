@@ -11,7 +11,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutModule } from './about/about.module';
 import { SigninService } from './signin/signin.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './signin/authinterceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,12 @@ import { HttpClientModule } from '@angular/common/http';
     AboutModule,
     HttpClientModule
   ],
-  providers: [SigninService,HttpClientModule],
+  providers: [SigninService,HttpClientModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   schemas: [  ]
 })

@@ -2,6 +2,8 @@ import { Component, Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IMember } from '../core/member';
 import { jwt_decode } from 'jwt-decode'
+import { resolve } from 'path';
+import { reject } from 'q';
 
 export const TOKEN_NAME: string = 'token';
 
@@ -16,12 +18,20 @@ export class SigninService {
   constructor(private http: HttpClient) {
   }
   setSession(authResult){
-    this.connectedUser = authResult;
-    this.setToken(this.connectedUser.token);
+  
   }
-  login(login: string, passwd: string ){
-    return this.http.post<IMember>(this.url, {login, passwd},{ headers: this.headers })
-    .toPromise().then(res => this.setSession);
+  login(login: string, password: string ){
+    return this.http.post<IMember>(this.url, {login, password},{ headers: this.headers })
+    .toPromise().then(res => {
+      this.connectedUser = res;
+      this.setToken(this.connectedUser.token);
+      resolve();
+    } ,
+    msg=>{
+      reject(msg);
+    }).catch(res =>{
+
+    });
   }
   logout() {
     localStorage.removeItem(TOKEN_NAME);

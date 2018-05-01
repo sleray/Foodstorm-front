@@ -19,10 +19,6 @@ export class SigninComponent implements OnInit {
   constructor(private _ss: SigninService, private router : Router, private formBuilder : FormBuilder) {
   }
   ngOnInit() {
-    /*this.form = this.formBuilder.group({
-      login: [null,Validators.required],
-      password: [null, Validators.required]
-    });*/
     this.form = new FormGroup({
       login : new FormControl(null,Validators.required),
       password : new FormControl(null,Validators.required)
@@ -37,7 +33,8 @@ export class SigninComponent implements OnInit {
   connectionAttemp(){
     console.log("Connection attemp from "+this.login+" with password :"+this.password+" (Security level = MAX)");
     //Easy login
-   this._ss.login(this.login, Md5.hashStr(this.password).toString());
+   var toto = this._ss.login(this.login, Md5.hashStr(this.password).toString());
+   console.log(toto);
    //this.router.navigate(['welcome']);
   }
 }
