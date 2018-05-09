@@ -1,4 +1,5 @@
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 <!-- Show menu if a user is connected-->
 <div *ngIf=getSignService().getConnectedUser()>
 
@@ -38,7 +39,7 @@
                           <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
                               role="menu" aria-labelledby="basic-link">
                               <li role="menuitem" ><a class="dropdown-item" [routerLink]="['/admin/ingredients']">Ingrédients</a></li>
-                              <li role="menuitem" ><a class="dropdown-item disabled" >Type d'ingrédients</a></li>
+                              <li role="menuitem" ><a class="dropdown-item " [routerLink]="['/admin/typeingredients']">Types d'ingrédients</a></li>
                               <li role="menuitem" ><a class="dropdown-item disabled" >Groupes d'ingrédients</a></li>                 
                           </ul>
                         </span>

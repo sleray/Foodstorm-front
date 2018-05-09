@@ -1,0 +1,75 @@
+update component
+
+<div class='container'>
+  <div class='card card-primary shadow'>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">   
+    <div class='card-heading'>
+       <h2> {{pageTitle}}</h2>
+    </div>
+  
+    <div class='card-body border shadow'>
+     
+        <div class='row'>
+            <div class='col-md-6'>
+                    <div class='row'>
+                            <div class='col-md-3'>Id:</div>
+                            <div class='col-md-6'>
+                                    <input type="text" class="form-control" id="group" name="id"
+                                    [(ngModel)]="ingredient.id" readonly />
+                                </div>
+                        </div>
+                <div class='row'>
+                    <div class='col-md-3'>Nom:</div>
+                    <div class='col-md-6'>
+                        <input type="text" class="form-control" id="name" name="name"
+                        [(ngModel)]="ingredient.name" readonly />
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Type:</div>
+                    <div class='col-md-6'>
+                            <input type="text" class="form-control" id="type" name="type"
+                            [(ngModel)]="ingredient.type.id"  />
+                        </div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Groupe:</div>
+                    <div class='col-md-6'>
+                            <input type="text" class="form-control" id="group" name="group"
+                            [(ngModel)]="ingredient.group" readonly />
+                        </div>
+                </div>
+                                <div class='row'>
+                    <div class='col-md-3'>Image:</div>
+                    <div class='col-md-6'>
+                            <input type="text" class="form-control" id="imageUrl" name="imageUrl"
+                            [(ngModel)]="ingredient.imageUrl"  />
+                        </div>
+                </div>
+                
+            </div>
+  
+            <div class='col-md-6'>
+                <img class='center-block img-responsive' 
+                     [style.width.px]='200' 
+                     [style.margin.px]='2' 
+                     [src]='ingredient.imageUrl'
+                     [title]='ingredient.name'>
+            </div>
+        </div>
+  
+    </div>
+  
+    <div class='card-footer'>
+            <div>
+                    <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                        <span class="fa fa-ban"></span>Cancel
+                    </button>
+                    <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                        <span class="fa fa-save"></span>Save
+                    </button>
+                </div>
+    </div>
+</form>
+  </div>
+  </div>
