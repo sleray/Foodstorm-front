@@ -1,7 +1,7 @@
 import { IFamily } from "./family";
 import { IRole } from "./role";
 
-export interface IMember {
+export class IMember {
     id : number
     login : string
     passwd : string

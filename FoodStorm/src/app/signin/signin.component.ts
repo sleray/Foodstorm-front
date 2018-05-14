@@ -12,34 +12,37 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class SigninComponent implements OnInit {
 
-  form : FormGroup
-  login : string;
-  password : string;
+  form: FormGroup
+  login: string;
+  password: string;
 
-  constructor(private _ss: SigninService, private router : Router, private formBuilder : FormBuilder) {
+  constructor(private _ss: SigninService, private router: Router, private formBuilder: FormBuilder) {
   }
   ngOnInit() {
     this.form = new FormGroup({
-      login : new FormControl(null,Validators.required),
-      password : new FormControl(null,Validators.required)
+      login: new FormControl(null, Validators.required),
+      password: new FormControl(null, Validators.required)
     });
   }
 
-  reset(){
+  reset() {
     this.login = "";
     this.password = "";
   }
 
-  connectionAttemp(){
-    console.log("Connection attemp from "+this.login+" with password :"+this.password+" (Security level = MAX)");
+  connectionAttemp() {
+    console.log("Connection attemp from " + this.login + " with password :" + this.password + " (Security level = MAX)");
     //Easy login
-   var toto = this._ss.login(this.login, Md5.hashStr(this.password).toString());
-   
-   if(this._ss.isTokenExpired()){
+    var toto = this._ss.login(this.login, Md5.hashStr(this.password).toString());
+
+    if (this._ss.isTokenExpired()) {
       console.log("not connected");
-   }else{
+    } else {
       console.log("connected");
       this.router.navigate(['welcome']);
-   }
+    }
+  }
+  getSignService() {
+    return this._ss;
   }
 }

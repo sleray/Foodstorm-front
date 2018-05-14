@@ -10,24 +10,36 @@ export const TOKEN_NAME: string = 'token';
 export class SigninService {
   private url: string = 'auth/sign-in';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private badAuth: boolean = false;
+  private errorServeur: boolean = false;
 
   connectedUser: IMember;
 
   constructor(private http: HttpClient) {
   }
-  setSession(authResult){
-  
+  setSession(authResult) {
+
   }
-  login(login: string, password: string ){
-    return this.http.post<IMember>(this.url, {login, password},{ headers: this.headers })
-    .toPromise().then(res => {
-      this.connectedUser = res;
-      this.setToken(this.connectedUser.token);
-     }).catch(res =>{
+  login(login: string, password: string) {
+    this.logout();
+    return this.http.post<IMember>(this.url, { login, password }, { headers: this.headers })
+      .toPromise().then(res => {
+        this.connectedUser = res;
+        this.setToken(this.connectedUser.token);
+      }).catch(res => {
+        if (res.status != 200) {
+          if (res.status == 404) {
+            this.badAuth = true;
+          } else {
+            this.errorServeur = true;
+          }
+        }
         console.log(res);
-    });
+      });
   }
-  logout() {
+  logout() {    
+    this.badAuth = false;
+    this.errorServeur = false;
     localStorage.removeItem(TOKEN_NAME);
     this.connectedUser = undefined;
   }
@@ -48,6 +60,12 @@ export class SigninService {
     const date = this.getTokenExpirationDate(token);
     if (date === undefined) return false;
     return !(date.valueOf() > new Date().valueOf());
+  }
+  isBadAuth(): boolean {
+    return this.badAuth;
+  }
+  isErrorServeur(): boolean {
+    return this.errorServeur;
   }
   getConnectedUser() {
     return this.connectedUser;

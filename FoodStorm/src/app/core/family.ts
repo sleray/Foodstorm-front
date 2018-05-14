@@ -1,4 +1,4 @@
-export interface IFamily{
+export class IFamily{
     id : number
     name : string
 }
