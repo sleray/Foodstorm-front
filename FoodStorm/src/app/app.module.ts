@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlertModule,CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
-
-
+import { AlertModule, CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +11,9 @@ import { AboutModule } from './about/about.module';
 import { SigninService } from './signin/signin.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './signin/authinterceptor';
+import { AdministrationModule } from './administration/administration.module';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthInterceptor } from './signin/authinterceptor';
     CollapseModule.forRoot(),
     AppRoutingModule,
     AboutModule,
-    HttpClientModule
+    HttpClientModule,
+    AdministrationModule
   ],
   providers: [SigninService,HttpClientModule,
     {
@@ -36,6 +38,11 @@ import { AuthInterceptor } from './signin/authinterceptor';
       multi: true
     }],
   bootstrap: [AppComponent],
-  schemas: [  ]
+  schemas: [  ],
+  exports:[
+    CommonModule,
+    FormsModule,
+    AppRoutingModule
+  ]
 })
 export class AppModule { }

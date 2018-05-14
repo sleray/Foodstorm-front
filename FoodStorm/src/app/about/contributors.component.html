@@ -1,3 +1,58 @@
-<p>
-  contributors works!
-</p>
+
+<div class="container">
+    <div class='card card-primary' >
+        <div class='card-header'>
+            <h2>{{pageTitle}}</h2>
+            <i>Tout seul on va plus vite, ensemble on va plus loin.</i>
+        </div>
+
+<div *ngFor='let contributor of contributors' class='card-body'>
+    
+        <div class='row border shadow'>
+                <div class='col-md-2 '>
+                        <img class='center-block img-responsive' 
+                             [style.width.px]='150' 
+                             [style.margin.px]='2' 
+                             [src]='contributor.imageUrl'
+                             [title]='contributor.name'>
+                    </div>
+            <div class='col-md-9 ' >
+                <div class='row'>
+                    <div class='col-md-5'>Nom :</div>
+                    <div class='col-md-6'><b>{{contributor.name}}</b></div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-5'>Employeur actuel :</div>
+                    <div class='col-md-6'>{{contributor.work}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-5 '>Twitter :</div>
+                    <div class='col-md-6 '><a href="{{contributor.twitterUrl}}">{{contributor.twitterUrl}}</a></div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-5'>Roles dans l'équipe :</div>
+                    <div class='col-md-6  float-left'>
+                     <ul class='list-inline'>
+                        <li class='list-inline-item'  *ngFor='let role of contributor.roles'>
+                          <span  *ngIf="role.type === 'primary'" class='badge badge-pill badge-success' >                          
+                            {{role.label}}
+                          </span>
+                          <span  *ngIf="role.type !== 'primary'" class='badge badge-pill badge-secondary' >
+                              {{role.label}}
+                          </span>
+                        </li>
+                    </ul> 
+
+                    </div>
+                </div>
+                
+            </div>
+            
+        
+</div>
+  
+    
+</div>
+
+</div>
+</div>
