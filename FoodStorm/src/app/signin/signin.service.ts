@@ -45,7 +45,6 @@ export class SigninService {
   }
   getTokenExpirationDate(token: string): Date {
     const decoded = jwt_decode(token);
-    console.log(decoded);
     if (decoded.exp === undefined) return null;
 
     const date = new Date(0);
@@ -56,7 +55,6 @@ export class SigninService {
   isTokenExpired(token?: string): boolean {
     if (!token) token = this.getToken();
     if (!token) return true;
-    console.log('token :' + token);
     const date = this.getTokenExpirationDate(token);
     if (date === undefined) return false;
     return !(date.valueOf() > new Date().valueOf());

@@ -31,7 +31,6 @@ export class SigninComponent implements OnInit {
   }
 
   connectionAttemp() {
-    console.log("Connection attemp from " + this.login + " with password :" + this.password + " (Security level = MAX)");
     //Easy login
     var toto = this._ss.login(this.login, Md5.hashStr(this.password).toString());
 
