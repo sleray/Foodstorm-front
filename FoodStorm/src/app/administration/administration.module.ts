@@ -9,6 +9,7 @@ import { IngredientUpdateComponent } from './ingredient/ingredient-update.compon
 import { TypeIngredientListComponent } from './type-ingredient/type-ingredient-list.component';
 import { TypeIngredientService } from './type-ingredient/type-ingredient.service';
 import { TypeIngredientCreateComponent } from '../administration/type-ingredient/type-ingredient-create.component';
+import { AlertService } from '../_services/alert.service';
 
 
 @NgModule({
@@ -18,6 +19,6 @@ import { TypeIngredientCreateComponent } from '../administration/type-ingredient
     AppRoutingModule
   ],
   declarations: [IngredientListComponent, IngredientDetailComponent, IngredientUpdateComponent, TypeIngredientListComponent, TypeIngredientCreateComponent],
-  providers: [IngredientService, TypeIngredientService, FormBuilder]
+  providers: [IngredientService, TypeIngredientService, FormBuilder, AlertService]
 })
 export class AdministrationModule { }

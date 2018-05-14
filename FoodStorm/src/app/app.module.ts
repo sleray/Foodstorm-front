@@ -13,10 +13,12 @@ import { AboutModule } from './about/about.module';
 import { SigninService } from './signin/signin.service';
 import { AdministrationModule } from './administration/administration.module';
 import { CommonModule } from '@angular/common';
+import { AlertComponent } from './_directives/alert.component';
+import { AlertService } from './_services/alert.service';
 
 @NgModule({
   declarations: [
-    AppComponent, SigninComponent, ForgotPasswordComponent, WelcomeComponent
+    AppComponent, SigninComponent, ForgotPasswordComponent, WelcomeComponent,AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { CommonModule } from '@angular/common';
     AboutModule,
     AdministrationModule
   ],
-  providers: [SigninService],
+  providers: [SigninService,AlertService],
   bootstrap: [AppComponent],
   schemas: [  ],
   exports:[
