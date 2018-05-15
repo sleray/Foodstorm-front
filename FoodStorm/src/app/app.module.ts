@@ -15,6 +15,7 @@ import { AdministrationModule } from './administration/administration.module';
 import { CommonModule } from '@angular/common';
 import { AlertComponent } from './_directives/alert.component';
 import { AlertService } from './_services/alert.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AlertService } from './_services/alert.service';
     CollapseModule.forRoot(),
     AppRoutingModule,
     AboutModule,
-    AdministrationModule
+    AdministrationModule,
+    BrowserAnimationsModule
   ],
   providers: [SigninService,AlertService],
   bootstrap: [AppComponent],
@@ -36,7 +38,8 @@ import { AlertService } from './_services/alert.service';
   exports:[
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ]
 })
 export class AppModule { }

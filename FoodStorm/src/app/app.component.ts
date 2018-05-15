@@ -9,11 +9,7 @@ import { SigninService } from './signin/signin.service';
 export class AppComponent implements OnInit {
   pageTitle: string = 'FoodStorm beta';
 
-
-
   constructor(private _ss: SigninService) {
-
-
 
   }
 

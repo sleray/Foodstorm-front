@@ -2,16 +2,18 @@
 
 import { Alert, AlertType } from '../_models/alert';
 import { AlertService } from '../_services/alert.service';
+import {trigger, transition,style,animate} from "@angular/animations";
 
 @Component({
     moduleId: module.id,
     selector: 'alertToaster',
     templateUrl: 'alert.component.html'
+   
 })
 
 export class AlertComponent {
     @Input() id: string;
-
+  
     alerts: Alert[] = [];
 
     constructor(private alertService: AlertService) { }
@@ -26,8 +28,12 @@ export class AlertComponent {
 
             // add alert to array
             this.alerts.push(alert);
+            
+           
+           
         });
     }
+   
 
     removeAlert(alert: Alert) {
         this.alerts = this.alerts.filter(x => x !== alert);

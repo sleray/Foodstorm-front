@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, transition, trigger, animate, style } from '@angular/core';
 import { TypeIngredient } from '../ingredient/ingredient';
 import { TypeIngredientService } from './type-ingredient.service';
 import { AlertService } from '../../_services/alert.service';
@@ -7,7 +7,8 @@ import { Alert, AlertType } from '../../_models/alert';
 @Component({
   selector: 'app-type-ingredient-list',
   templateUrl: './type-ingredient-list.component.html',
-  styleUrls: ['./type-ingredient-list.component.scss']
+  styleUrls: ['./type-ingredient-list.component.scss'],
+  
 })
 export class TypeIngredientListComponent implements OnInit {
   pageTitle = "Types d'ingrédients";
@@ -22,6 +23,7 @@ export class TypeIngredientListComponent implements OnInit {
    
   }
 
+  
   getList() {
     this.service.getListTypeIngredients().subscribe(res => {
       this.typeIngredients = res;

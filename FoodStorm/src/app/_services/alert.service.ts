@@ -62,7 +62,6 @@ export class AlertService {
 //Save an alert for later call. Do not forget to clear the array when you have shown messages.
     saveAlert(alertType : AlertType,message : string) {
         this.savedAlerts.push(new Alert({ message, type: alertType }));
-        console.log(this.savedAlerts);
     
     }
 

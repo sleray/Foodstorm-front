@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-      <tr *ngFor="let typeingredient of typeIngredients">
+      <tr [@fadeAnimation]="fadeDirection" *ngFor="let typeingredient of typeIngredients">
           <td>{{ typeingredient.id }}</td>
           <td>{{ typeingredient.name }}</td>
           <td><a [routerLink]="['/edit', typeingredient.id]" class="btn btn-primary">

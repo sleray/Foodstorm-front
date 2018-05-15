@@ -15,7 +15,7 @@ export class TypeIngredientService {
 
     private _contribUrl = './api/typeingredients.json';
     //TODO set a global variable, varying from env.
-    private resourceUrl = 'https://www.coachingdigital.fr/foodstorm-back-stagging/typeingredients/';
+    private resourceUrl = 'typeingredients/';
     
 
     constructor(private _http: HttpClient) { }
