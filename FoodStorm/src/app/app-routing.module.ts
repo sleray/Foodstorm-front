@@ -11,9 +11,11 @@ import { IngredientDetailComponent } from './administration/ingredient/ingredien
 import { IngredientUpdateComponent } from './administration/ingredient/ingredient-update.component';
 import { TypeIngredientListComponent } from './administration/type-ingredient/type-ingredient-list.component';
 import { TypeIngredientCreateComponent } from './administration/type-ingredient/type-ingredient-create.component';
+import { AuthGuardService } from './guard/auth-guard.service';
+import { IsAlreadyLoggedGuard } from './guard/is-already-logged.guard';
 
 const routes: Routes = [  
-  { path: 'welcome', component: WelcomeComponent },  
+  { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuardService] },  
   { path: 'forgotPassword', component: ForgotPasswordComponent },  
   { path: 'signin', component: SigninComponent },
   { path: 'about/contributors', component: ContributorsComponent },
@@ -22,7 +24,7 @@ const routes: Routes = [
   { path: 'admin/ingredients/new',  component: IngredientUpdateComponent },
   { path: 'admin/typeingredients',  component: TypeIngredientListComponent },  
   { path: 'admin/typeingredients/new',  component: TypeIngredientCreateComponent },  
-  { path: '', component: SigninComponent,  pathMatch: 'full' }
+  { path: '', component: SigninComponent,  pathMatch: 'full', canActivate: [IsAlreadyLoggedGuard]}
 ];
 
 @NgModule({
