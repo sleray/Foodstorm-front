@@ -16,11 +16,8 @@ export const CONNECTED_USER: string = 'user';
 export class SigninService {
   private url: string = 'auth/sign-in';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private badAuth: boolean = false;
-  private errorServeur: boolean = false;
 
   constructor(private http: HttpClient) {
-    console.log("authservice created");
   }
   setSession(authResult) {
 
@@ -34,8 +31,6 @@ export class SigninService {
       }).catch(this.handleError);
   }
   logout() {
-    this.badAuth = false;
-    this.errorServeur = false;
     localStorage.removeItem(TOKEN_NAME);
     localStorage.removeItem(CONNECTED_USER);
   }
@@ -54,12 +49,6 @@ export class SigninService {
     const date = this.getTokenExpirationDate(token);
     if (date === undefined) return false;
     return !(date.valueOf() > new Date().valueOf());
-  }
-  isBadAuth(): boolean {
-    return this.badAuth;
-  }
-  isErrorServeur(): boolean {
-    return this.errorServeur;
   }
   getToken(): string {
     return localStorage.getItem(TOKEN_NAME);

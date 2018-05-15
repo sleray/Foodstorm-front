@@ -46,7 +46,6 @@ export class SigninComponent implements OnInit {
         }
       }, (err => {
         var jsonErr : ErrorAuth = JSON.parse(err);
-        console.log(jsonErr);
         if (jsonErr.status != 200) {
           if (jsonErr.status == 404) {
             this.badAuth = true;
