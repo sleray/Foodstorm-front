@@ -61,11 +61,11 @@
                 <div class="navbar-collapse collapse order-3 dual-collapse2">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                          <a class="nav-link" >Bienvenue #user</a>
+                          <a class="nav-link" >Bienvenue {{getSignService().getUser().login}}</a>
                             
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Déconnexion</a>
+                            <button type="button" class="btn btn-link nav-link" (click)="logout()">Déconnexion</button>
                         </li>
                     </ul>
                 </div>

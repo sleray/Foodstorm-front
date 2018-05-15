@@ -5,10 +5,10 @@
                 <div class="text-center mb-2">
                     <h3>Connexion</h3>
                 </div>
-                <div *ngIf=getSignService().isBadAuth()>
+                <div *ngIf=badAuth>
                     <span class="red-text">Votre identifiant ou votre mot de passe est incorecte !</span>
                 </div>
-                <div *ngIf=getSignService().isErrorServeur()>
+                <div *ngIf=errorServeur>
                     <span class="red-text">Une erreur est survenue merci de réessayer ultérieurement</span>
                 </div>
                 <div class="form-inline">

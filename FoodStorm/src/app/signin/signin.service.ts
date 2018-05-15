@@ -1,9 +1,15 @@
 import { Component, Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { IMember } from '../core/member';
 import * as jwt_decode from 'jwt-decode';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
 export const TOKEN_NAME: string = 'token';
+export const CONNECTED_USER: string = 'user';
 
 
 @Injectable()
@@ -13,35 +19,25 @@ export class SigninService {
   private badAuth: boolean = false;
   private errorServeur: boolean = false;
 
-  connectedUser: IMember;
-
   constructor(private http: HttpClient) {
+    console.log("authservice created");
   }
   setSession(authResult) {
 
   }
-  login(login: string, password: string) {
+  login(login: string, password: string): Observable<IMember> {
     this.logout();
     return this.http.post<IMember>(this.url, { login, password }, { headers: this.headers })
-      .toPromise().then(res => {
-        this.connectedUser = res;
-        this.setToken(this.connectedUser.token);
-      }).catch(res => {
-        if (res.status != 200) {
-          if (res.status == 404) {
-            this.badAuth = true;
-          } else {
-            this.errorServeur = true;
-          }
-        }
-        console.log(res);
-      });
+      .do(data => {
+        this.setUser(data);
+        this.setToken(data.token);
+      }).catch(this.handleError);
   }
-  logout() {    
+  logout() {
     this.badAuth = false;
     this.errorServeur = false;
     localStorage.removeItem(TOKEN_NAME);
-    this.connectedUser = undefined;
+    localStorage.removeItem(CONNECTED_USER);
   }
   getTokenExpirationDate(token: string): Date {
     const decoded = jwt_decode(token);
@@ -65,14 +61,33 @@ export class SigninService {
   isErrorServeur(): boolean {
     return this.errorServeur;
   }
-  getConnectedUser() {
-    return this.connectedUser;
-  }
   getToken(): string {
     return localStorage.getItem(TOKEN_NAME);
   }
 
   setToken(token: string): void {
     localStorage.setItem(TOKEN_NAME, token);
+  }
+  setUser(user: IMember): void {
+    localStorage.setItem(CONNECTED_USER, JSON.stringify(user));
+  }
+  getUser(): IMember {
+    return JSON.parse(localStorage.getItem(CONNECTED_USER));
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    // in a real world app, we may send the server to some remote logging infrastructure
+    // instead of just logging it to the console
+    let errorMessage = '';    
+    if (err.error instanceof Error) {
+      // A client-side or network error occurred. Handle it accordingly.
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return Observable.throw(`{ "status" : ${err.status} , "message" : "${err.message}" }`);
   }
 } 

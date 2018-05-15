@@ -4,6 +4,7 @@ import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
 import { SigninService } from './signin.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ErrorAuth } from './errorAuth';
 
 @Component({
   selector: 'app-signin',
@@ -15,6 +16,8 @@ export class SigninComponent implements OnInit {
   form: FormGroup
   login: string;
   password: string;
+  private badAuth: boolean = false;
+  private errorServeur: boolean = false;
 
   constructor(private _ss: SigninService, private router: Router, private formBuilder: FormBuilder) {
   }
@@ -28,18 +31,32 @@ export class SigninComponent implements OnInit {
   reset() {
     this.login = "";
     this.password = "";
+    this.badAuth = false;
+    this.errorServeur = false;
   }
 
   connectionAttemp() {
+    this.badAuth = false;
+    this.errorServeur = false;
     //Easy login
-    var toto = this._ss.login(this.login, Md5.hashStr(this.password).toString());
+    this._ss.login(this.login, Md5.hashStr(this.password).toString())
+      .subscribe(res => {
+        if (!this._ss.isTokenExpired()) {
+          this.router.navigate(['welcome']);
+        }
+      }, (err => {
+        var jsonErr : ErrorAuth = JSON.parse(err);
+        console.log(jsonErr);
+        if (jsonErr.status != 200) {
+          if (jsonErr.status == 404) {
+            this.badAuth = true;
+          } else {
+            this.errorServeur = true;
+          }
+        }
+      }));
 
-    if (this._ss.isTokenExpired()) {
-      console.log("not connected");
-    } else {
-      console.log("connected");
-      this.router.navigate(['welcome']);
-    }
+
   }
   getSignService() {
     return this._ss;

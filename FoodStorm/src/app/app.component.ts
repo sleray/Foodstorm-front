@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SigninService } from './signin/signin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +12,19 @@ export class AppComponent implements OnInit {
 
 
 
-  constructor(private _ss: SigninService) {
+  constructor(private _ss: SigninService,private router: Router) {
 
 
 
   }
 
-  getSignService(){
+  getSignService() {
     return this._ss;
   }
-
+  logout() {
+    this._ss.logout();
+    this.router.navigate(['/']);
+  }
 
   ngOnInit() {
 

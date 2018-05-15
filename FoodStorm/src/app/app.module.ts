@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './signin/authinterceptor';
 import { AdministrationModule } from './administration/administration.module';
 import { CommonModule } from '@angular/common';
+import { GuardModule } from './guard/guard.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     AboutModule,
     HttpClientModule,
-    AdministrationModule
+    AdministrationModule,
+    GuardModule
   ],
   providers: [SigninService,HttpClientModule,
     {
