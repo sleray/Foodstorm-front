@@ -1,6 +1,6 @@
 import { Component, Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { IMember } from '../core/member';
+import { IMember } from '../_models/member';
 import * as jwt_decode from 'jwt-decode';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
