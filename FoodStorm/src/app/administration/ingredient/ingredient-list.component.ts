@@ -1,4 +1,4 @@
-import { Component, OnInit, transition, trigger, animate, style } from '@angular/core';
+import { Component, OnInit, transition, trigger, animate, style, state } from '@angular/core';
 import { IngredientService } from './ingredient.service';
 import { IIngredient } from './ingredient';
 
@@ -54,7 +54,9 @@ export class IngredientListComponent implements OnInit {
       }
   
       toggleImage(): void {
+        
           this.showImage = !this.showImage;
+          console.log('toggleImage : '+this.showImage);
       }
   
       ngOnInit(): void {
@@ -75,6 +77,7 @@ export class IngredientListComponent implements OnInit {
   }
   toggle() {
     this.fadeDirection == 'fadeOut' ? this.fadeIn() : this.fadeOut();
+    console.log('toggle : '+this.fadeDirection);
   }
 
      

@@ -30,12 +30,12 @@
                                 src='../../assets/hideimage.png'
                                 title='Hide images'
                                 [style.width.px]='imageWidth'
-                                [style.margin.px]='imageMargin' (click)='toggleImage()'>
+                                [style.margin.px]='imageMargin' (click)='toggle()'>
                             <img *ngIf='!showImage'
                                 src='../../assets/showimage.png'
                                 title='Show images'
                                 [style.width.px]='imageWidth'
-                                [style.margin.px]='imageMargin' (click)='toggleImage()'>                                
+                                [style.margin.px]='imageMargin' (click)='toggle()'>                                
                                 
                       
                         </th>
@@ -48,7 +48,8 @@
                 <tbody>
                     <tr *ngFor='let ingredient of filteredIngredients'>
                         <td>
-                            <img *ngIf='showImage'
+                            <img [@fadeAnimation]="fadeDirection"
+                            
                                 [src]='ingredient.imageUrl'
                                 [title]='ingredient.name'
                                 [style.width.px]='imageWidth'

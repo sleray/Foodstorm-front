@@ -15,13 +15,13 @@ export class IngredientService {
 
     private _contribUrl = './api/ingredients.json';
     //TODO set a global variable, varying from env.
-    private resourceUrl = 'https://www.coachingdigital.fr/foodstorm-back-stagging/ingredients/';
+    private resourceUrl = 'ingredients/';
     
     constructor(private _http: HttpClient) { }
 
 
     getIngredients(): Observable<IIngredient[]> {
-        return this._http.get<IIngredient[]>(this._contribUrl)
+        return this._http.get<IIngredient[]>(this.resourceUrl)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }

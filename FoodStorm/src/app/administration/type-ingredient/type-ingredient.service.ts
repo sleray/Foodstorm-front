@@ -27,16 +27,6 @@ export class TypeIngredientService {
       .catch(this.handleError);
     }
 
-    getIngredients(): Observable<TypeIngredient[]> {
-        return this._http.get<TypeIngredient[]>(this._contribUrl)
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-    }
-
-    getIngredient(id: number): Observable<TypeIngredient> {
-      return this.getIngredients()
-          .map((typeIngredients: TypeIngredient[]) => typeIngredients.find(p => p.id === id));
-    }
 
     create(typeIngredient: TypeIngredient): Observable<EntityResponseType> {
 

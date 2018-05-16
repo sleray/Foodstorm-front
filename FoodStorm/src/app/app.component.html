@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 <!-- Show menu if a user is connected-->
-<div *ngIf=getSignService().getConnectedUser()>
+<div *ngIf="getSignService().isTokenExpired()===false">
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">{{pageTitle}}</a>           
@@ -61,11 +61,11 @@
                 <div class="navbar-collapse collapse order-3 dual-collapse2">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                          <a class="nav-link" >Bienvenue #user</a>
+                          <a class="nav-link" >Bienvenue {{getSignService().getUser().login}}</a>
                             
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Déconnexion</a>
+                            <button type="button" class="btn btn-link nav-link" (click)="logout()">Déconnexion</button>
                         </li>
                     </ul>
                 </div>

@@ -3,6 +3,8 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
 import { SigninService } from './signin.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ErrorAuth } from './errorAuth';
 
 @Component({
   selector: 'app-signin',
@@ -10,28 +12,52 @@ import { SigninService } from './signin.service';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  login : string;
-  password : string;
-  passwordEncrypt : string;
 
-  constructor(private _ss: SigninService, private router : Router) {
+  form: FormGroup
+  login: string;
+  password: string;
+  private badAuth: boolean = false;
+  private errorServeur: boolean = false;
+
+  constructor(private _ss: SigninService, private router: Router, private formBuilder: FormBuilder) {
   }
   ngOnInit() {
+    this.form = new FormGroup({
+      login: new FormControl(null, Validators.required),
+      password: new FormControl(null, Validators.required)
+    });
   }
 
-  md5Password(){
-    this.passwordEncrypt = Md5.hashStr(this.password).toString();
-  }
-  reset(){
+  reset() {
     this.login = "";
     this.password = "";
-    this.passwordEncrypt = "";
+    this.badAuth = false;
+    this.errorServeur = false;
   }
 
-  connectionAttemp(){
-    console.log("Connection attemp from "+this.login+" with password :"+this.password+" (Security level = MAX)");
+  connectionAttemp() {
+    this.badAuth = false;
+    this.errorServeur = false;
     //Easy login
-   this._ss.connectionAttemp(this.login);
-   this.router.navigate(['welcome']);
+    this._ss.login(this.login, Md5.hashStr(this.password).toString())
+      .subscribe(res => {
+        if (!this._ss.isTokenExpired()) {
+          this.router.navigate(['welcome']);
+        }
+      }, (err => {
+        var jsonErr : ErrorAuth = JSON.parse(err);
+        if (jsonErr.status != 200) {
+          if (jsonErr.status == 404) {
+            this.badAuth = true;
+          } else {
+            this.errorServeur = true;
+          }
+        }
+      }));
+
+
+  }
+  getSignService() {
+    return this._ss;
   }
 }
