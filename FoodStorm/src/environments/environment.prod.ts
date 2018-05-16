@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  backUrl : "https://coachingdigital.fr/foodstorm-back"
 };

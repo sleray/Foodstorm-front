@@ -2,10 +2,10 @@ export interface IIngredient {
     id : number;
     name : string;
     imageUrl : string;
-    type : ITypeIngredient;
+    type : TypeIngredient;
     groups : IGroupIngredient[];
 }
-export interface ITypeIngredient {
+export class TypeIngredient {
     id : number;
     name : string;
 }

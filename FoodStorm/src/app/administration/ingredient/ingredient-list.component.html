@@ -1,8 +1,12 @@
-<div class="container  h-100">
-    <div class="row align-self-center  justify-content-center w-100 ">
-<div class='card card-primary'>
+<div class="container ">
+    <div class="row align-self-center  justify-content-center">
+<div class='card card-primary w-100'>
     <div class='card-heading'>
        <h2> {{pageTitle}}</h2>
+       <button id="create-entity" class="btn btn-primary float-right" [routerLink]="['/ingredients/new']">
+        <span class="fa fa-plus"></span>
+        <span> Nouveau </span>
+    </button>
     </div>
     <div class='card-body'>
         <div class='row'>
@@ -26,12 +30,12 @@
                                 src='../../assets/hideimage.png'
                                 title='Hide images'
                                 [style.width.px]='imageWidth'
-                                [style.margin.px]='imageMargin' (click)='toggleImage()'>
+                                [style.margin.px]='imageMargin' (click)='toggle()'>
                             <img *ngIf='!showImage'
                                 src='../../assets/showimage.png'
                                 title='Show images'
                                 [style.width.px]='imageWidth'
-                                [style.margin.px]='imageMargin' (click)='toggleImage()'>                                
+                                [style.margin.px]='imageMargin' (click)='toggle()'>                                
                                 
                       
                         </th>
@@ -44,7 +48,8 @@
                 <tbody>
                     <tr *ngFor='let ingredient of filteredIngredients'>
                         <td>
-                            <img *ngIf='showImage'
+                            <img [@fadeAnimation]="fadeDirection"
+                            
                                 [src]='ingredient.imageUrl'
                                 [title]='ingredient.name'
                                 [style.width.px]='imageWidth'

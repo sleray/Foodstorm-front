@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, transition, trigger, animate, style, state } from '@angular/core';
 import { IngredientService } from './ingredient.service';
 import { IIngredient } from './ingredient';
 
 @Component({
   selector: 'app-ingredient-list',
   templateUrl: './ingredient-list.component.html',
-  styleUrls: ['./ingredient-list.component.scss']
+  styleUrls: ['./ingredient-list.component.scss'],
+  animations: [
+    trigger('fadeAnimation', [
+      transition('* => fadeIn', [
+        // fade in Animation
+        style({ opacity: 0 }),
+        animate(4000, style({ opacity: 1 }))
+        
+      ]),
+      transition('* => fadeOut', [
+        // fade out Animation
+        animate(4000, style({ opacity: 0 }))
+        
+      ])
+    ])
+  ]
 })
 export class IngredientListComponent implements OnInit {
 
       pageTitle: string = 'Liste des ingrédients';
+      fadeDirection='';
       imageWidth: number = 50;
       imageMargin: number = 2;
       showImage: boolean = false;
@@ -38,7 +54,9 @@ export class IngredientListComponent implements OnInit {
       }
   
       toggleImage(): void {
+        
           this.showImage = !this.showImage;
+          console.log('toggleImage : '+this.showImage);
       }
   
       ngOnInit(): void {
@@ -49,5 +67,19 @@ export class IngredientListComponent implements OnInit {
                   },
                       error => this.errorMessage = <any>error);
       }
+
+       //Animation code
+   fadeIn() {
+    this.fadeDirection = 'fadeIn';
+  }
+  fadeOut() {
+    this.fadeDirection = 'fadeOut';
+  }
+  toggle() {
+    this.fadeDirection == 'fadeOut' ? this.fadeIn() : this.fadeOut();
+    console.log('toggle : '+this.fadeDirection);
+  }
+
+     
   }
   
