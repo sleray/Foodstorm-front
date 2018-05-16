@@ -8,7 +8,6 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import {environment } from '../../environments/environment'
-const PATH : string = "foodstorm-back";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
