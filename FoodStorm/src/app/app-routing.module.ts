@@ -6,11 +6,6 @@ import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ContributorsComponent } from './about/contributors.component';
-<<<<<<< HEAD
-import { IngredientListComponent } from './administration/ingredient-list.component';
-import { IngredientDetailComponent } from './administration/ingredient-detail.component';
-import { RandomMenuComponent } from './random-menu/random-menu.component';
-=======
 import { IngredientListComponent } from './administration/ingredient/ingredient-list.component';
 import { IngredientDetailComponent } from './administration/ingredient/ingredient-detail.component';
 import { IngredientUpdateComponent } from './administration/ingredient/ingredient-update.component';
@@ -18,7 +13,7 @@ import { TypeIngredientListComponent } from './administration/type-ingredient/ty
 import { TypeIngredientCreateComponent } from './administration/type-ingredient/type-ingredient-create.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { IsAlreadyLoggedGuard } from './guard/is-already-logged.guard';
->>>>>>> master
+import { RandomMenuComponent } from './random-menu/random-menu.component';
 
 const routes: Routes = [  
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuardService] },  
@@ -26,17 +21,12 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'about/contributors', component: ContributorsComponent },
   { path: 'admin/ingredients', component: IngredientListComponent },
-<<<<<<< HEAD
-  { path: 'ingredients/:id',  component: IngredientDetailComponent },
-  { path: 'randomMenu',  component: RandomMenuComponent },
-  { path: '', component: SigninComponent,  pathMatch: 'full' }
-=======
   { path: 'admin/ingredients/:id',  component: IngredientDetailComponent },
   { path: 'admin/ingredients/new',  component: IngredientUpdateComponent },
   { path: 'admin/typeingredients',  component: TypeIngredientListComponent },  
-  { path: 'admin/typeingredients/new',  component: TypeIngredientCreateComponent },  
+  { path: 'admin/typeingredients/new',  component: TypeIngredientCreateComponent }, 
+  { path: 'randomMenu',  component: RandomMenuComponent }, 
   { path: '', component: SigninComponent,  pathMatch: 'full', canActivate: [IsAlreadyLoggedGuard]}
->>>>>>> master
 ];
 
 @NgModule({
