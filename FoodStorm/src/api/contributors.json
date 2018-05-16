@@ -22,7 +22,7 @@
             }
         ],             
         "work": "Sogeti - Nantes",
-        "twitterUrl": "www.twitter.com/sylvainleray",   
+        "twitterUrl": "http://www.twitter.com/sylvainleray",   
         "imageUrl": "https://image.freepik.com/free-icon/man-dark-avatar_318-9118.jpg"
     },
     {
@@ -37,13 +37,12 @@
             {"label":"Front end developer",
              "type": "primary"   
             },
-
             {"label":"Core Team member",
-             "type": "primary"   
+             "type": "secondary"   
             }
         ],
         "work": "Cap Gemini FS - Nantes",
-        "twitterUrl": "www.twitter.com/", 
+        "twitterUrl": "n/a", 
         "imageUrl": "https://image.freepik.com/free-icon/man-dark-avatar_318-9118.jpg"
     },
     {
@@ -56,11 +55,11 @@
              "type": "primary"   
             },    
             {"label":"Core Team Member",
-             "type": "primary"   
+             "type": "secondary"   
             }
         ],
         "work": "Cap Gemini CSD - Nantes",
-        "twitterUrl": "www.twitter.com/", 
+        "twitterUrl": "n/a", 
         "imageUrl": "https://image.freepik.com/free-icon/female-science-expert-with-eyeglasses_318-56656.jpg"
     }
 
