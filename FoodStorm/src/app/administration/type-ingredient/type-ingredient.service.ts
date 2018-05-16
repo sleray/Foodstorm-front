@@ -15,38 +15,24 @@ export class TypeIngredientService {
 
     private _contribUrl = './api/typeingredients.json';
     //TODO set a global variable, varying from env.
-    private resourceUrl = 'https://www.coachingdigital.fr/foodstorm-back-stagging/typeingredients/';
+    private resourceUrl = 'typeingredients/';
     
 
     constructor(private _http: HttpClient) { }
 
     getListTypeIngredients(): Observable<TypeIngredient[]> {
-/*      const _headers = new HttpHeaders();
-      const headers = _headers.append('Content-Type', 'application/json')
-                              .append('...', '...')
-                              .append('...', '...');
-*/
+
       return this._http.get<TypeIngredient[]>(this.resourceUrl)
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
     }
 
-    getIngredients(): Observable<TypeIngredient[]> {
-        return this._http.get<TypeIngredient[]>(this._contribUrl)
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-    }
-
-    getIngredient(id: number): Observable<TypeIngredient> {
-      return this.getIngredients()
-          .map((typeIngredients: TypeIngredient[]) => typeIngredients.find(p => p.id === id));
-    }
 
     create(typeIngredient: TypeIngredient): Observable<EntityResponseType> {
-      console.log('service post called');
+
       const copy = this.convert(typeIngredient);
       return this._http
-        .post<TypeIngredient>(this.resourceUrl, copy, { observe: 'response' })
+        .post<TypeIngredient>(this.resourceUrl, copy,  {observe: 'response'} )
         .map((res: EntityResponseType) => this.convertResponse(res));
     }
   
@@ -55,6 +41,18 @@ export class TypeIngredientService {
       return this._http
         .put<TypeIngredient>(this.resourceUrl, copy, { observe: 'response' })
         .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+//This header (responseType : text) is required when back-end returns a string or Void.
+    delete(id) {
+      const uri = this.resourceUrl + id;
+      var retour = this
+      ._http
+      .delete(uri,     {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+        responseType: 'text' 
+     }).catch(this.handleError);
+      console.log('retour :'+retour);    
+      return retour;
     }
 
     private handleError(err: HttpErrorResponse) {

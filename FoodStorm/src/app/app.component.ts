@@ -14,8 +14,6 @@ export class AppComponent implements OnInit {
 
   constructor(private _ss: SigninService,private router: Router) {
 
-
-
   }
 
   getSignService() {

@@ -13,12 +13,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './signin/authinterceptor';
 import { AdministrationModule } from './administration/administration.module';
 import { CommonModule } from '@angular/common';
+import { AlertComponent } from './_directives/alert.component';
+import { AlertService } from './_services/alert.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GuardModule } from './guard/guard.module';
-
 
 @NgModule({
   declarations: [
-    AppComponent, SigninComponent, ForgotPasswordComponent, WelcomeComponent
+    AppComponent, SigninComponent, ForgotPasswordComponent, WelcomeComponent,AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -29,11 +31,13 @@ import { GuardModule } from './guard/guard.module';
     CollapseModule.forRoot(),
     AppRoutingModule,
     AboutModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AdministrationModule,
     GuardModule
+
   ],
-  providers: [SigninService,HttpClientModule,
+  providers: [SigninService,HttpClientModule,AlertService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -44,7 +48,8 @@ import { GuardModule } from './guard/guard.module';
   exports:[
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ]
 })
 export class AppModule { }

@@ -9,15 +9,20 @@ import { IngredientUpdateComponent } from './ingredient/ingredient-update.compon
 import { TypeIngredientListComponent } from './type-ingredient/type-ingredient-list.component';
 import { TypeIngredientService } from './type-ingredient/type-ingredient.service';
 import { TypeIngredientCreateComponent } from '../administration/type-ingredient/type-ingredient-create.component';
+import { AlertService } from '../_services/alert.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   declarations: [IngredientListComponent, IngredientDetailComponent, IngredientUpdateComponent, TypeIngredientListComponent, TypeIngredientCreateComponent],
-  providers: [IngredientService, TypeIngredientService, FormBuilder]
+  providers: [IngredientService, TypeIngredientService, FormBuilder, AlertService],
+  exports:[    BrowserAnimationsModule]
 })
 export class AdministrationModule { }
