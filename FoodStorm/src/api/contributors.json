@@ -16,7 +16,7 @@
             },
             {"label":"Team leader",
              "type": "primary"   
-            },
+            },            
             {"label":"Project initiator",
              "type": "secondary"   
             }
@@ -28,16 +28,16 @@
     {
         "name": "Jean-Philippe Etrillard",
         "roles": [
-           
+            {"label":"Devops",
+             "type": "primary"   
+            },           
             {"label":"Back end developer",
              "type": "primary"   
             },
             {"label":"Front end developer",
              "type": "primary"   
             },
-            {"label":"Devops",
-             "type": "secondary"   
-            },
+
             {"label":"Core Team member",
              "type": "primary"   
             }
