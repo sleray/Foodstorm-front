@@ -25,7 +25,7 @@ export class TypeIngredientUpdateComponent implements OnInit {
     });
   }
   onSubmit() { 
-    console.log("creation d'un type d'ingredient ! "+this.typeIngredient);
+    console.log("Modification d'un type d'ingredient ! "+this.typeIngredient.name);
     this.service.update(this.typeIngredient).subscribe(res => {
       console.log(res);
       this.alertService.saveAlert(AlertType.Success,"Le type d'ingrédient a bien été modifié !");

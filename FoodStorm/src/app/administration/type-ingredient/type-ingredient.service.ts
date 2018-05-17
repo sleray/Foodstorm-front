@@ -103,6 +103,7 @@ export class TypeIngredientService {
    */
   private convert(typeIngredient: TypeIngredient): TypeIngredient {
     const copy: TypeIngredient = Object.assign({}, typeIngredient, {});
+    console.log("convert id :"+copy.id+" ; name : "+copy.name); 
     return copy;
   }
 }
