@@ -36,6 +36,7 @@ export class TypeIngredientService {
     create(typeIngredient: TypeIngredient): Observable<EntityResponseType> {
 
       const copy = this.convert(typeIngredient);
+      console.log("convert id :"+copy.id+" ; name : "+copy.name); 
       return this._http
         .post<TypeIngredient>(this.resourceUrl, copy,  {observe: 'response'} )
         .map((res: EntityResponseType) => this.convertResponse(res));
@@ -43,7 +44,7 @@ export class TypeIngredientService {
   
     update(typeIngredient: TypeIngredient): Observable<EntityResponseType> {
       const copy = this.convert(typeIngredient);
-      console.log("copy :"+typeIngredient);
+      console.log("convert id :"+copy.id+" ; name : "+copy.name); 
       return this._http
         .put<TypeIngredient>(this.resourceUrl, copy, { observe: 'response' })
         .map((res: EntityResponseType) => this.convertResponse(res));
@@ -103,7 +104,7 @@ export class TypeIngredientService {
    */
   private convert(typeIngredient: TypeIngredient): TypeIngredient {
     const copy: TypeIngredient = Object.assign({}, typeIngredient, {});
-    console.log("convert id :"+copy.id+" ; name : "+copy.name); 
+    
     return copy;
   }
 }
