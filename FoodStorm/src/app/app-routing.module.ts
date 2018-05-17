@@ -13,6 +13,7 @@ import { TypeIngredientListComponent } from './administration/type-ingredient/ty
 import { TypeIngredientCreateComponent } from './administration/type-ingredient/type-ingredient-create.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { IsAlreadyLoggedGuard } from './guard/is-already-logged.guard';
+import { TypeIngredientUpdateComponent } from './administration/type-ingredient/type-ingredient-update.component';
 
 const routes: Routes = [  
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuardService] },  
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'admin/ingredients/new',  component: IngredientUpdateComponent },
   { path: 'admin/typeingredients',  component: TypeIngredientListComponent },  
   { path: 'admin/typeingredients/new',  component: TypeIngredientCreateComponent },  
+  { path: 'admin/typeingredients/edit/:id',  component: TypeIngredientUpdateComponent }, 
   { path: '', component: SigninComponent,  pathMatch: 'full', canActivate: [IsAlreadyLoggedGuard]}
 ];
 

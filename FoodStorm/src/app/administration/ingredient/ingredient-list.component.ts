@@ -8,15 +8,17 @@ import { IIngredient } from './ingredient';
   styleUrls: ['./ingredient-list.component.scss'],
   animations: [
     trigger('fadeAnimation', [
+      state('fadeIn',style({ opacity: 1 })),
+      state('fadeOut',style({ opacity: 0 })),
       transition('* => fadeIn', [
         // fade in Animation
         style({ opacity: 0 }),
-        animate(4000, style({ opacity: 1 }))
+        animate(3000, style({ opacity: 1 }))
         
       ]),
       transition('* => fadeOut', [
         // fade out Animation
-        animate(4000, style({ opacity: 0 }))
+        animate(3000, style({ opacity: 0 }))
         
       ])
     ])
@@ -25,7 +27,7 @@ import { IIngredient } from './ingredient';
 export class IngredientListComponent implements OnInit {
 
       pageTitle: string = 'Liste des ingrédients';
-      fadeDirection='';
+      fadeDirection='fadeIn';
       imageWidth: number = 50;
       imageMargin: number = 2;
       showImage: boolean = false;
@@ -77,7 +79,7 @@ export class IngredientListComponent implements OnInit {
   }
   toggle() {
     this.fadeDirection == 'fadeOut' ? this.fadeIn() : this.fadeOut();
-    console.log('toggle : '+this.fadeDirection);
+    this.toggleImage(); //to update eye image and title
   }
 
      

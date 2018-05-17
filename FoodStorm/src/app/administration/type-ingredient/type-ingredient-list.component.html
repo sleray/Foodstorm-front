@@ -22,7 +22,7 @@
       <tr  *ngFor="let typeingredient of typeIngredients">
           <td>{{ typeingredient.id }}</td>
           <td>{{ typeingredient.name }}</td>
-          <td><a [routerLink]="['/edit', typeingredient.id]" class="btn btn-primary">
+          <td><a [routerLink]="['/admin/typeingredients/edit', typeingredient.id]" class="btn btn-primary">
             <i class="fas fa-edit"></i>
             Modifier</a></td>
           <td><button (click)="delete(typeingredient.id)"  class="btn btn-danger">

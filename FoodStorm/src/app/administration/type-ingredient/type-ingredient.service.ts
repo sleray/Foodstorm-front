@@ -26,7 +26,12 @@ export class TypeIngredientService {
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
     }
+    getTypeIngredient(id : number): Observable<TypeIngredient> {
 
+      return this._http.get<TypeIngredient[]>(this.resourceUrl+"/"+id)
+      .do(data => console.log('get('+id+'): ' + JSON.stringify(data)))
+      .catch(this.handleError);
+    }
 
     create(typeIngredient: TypeIngredient): Observable<EntityResponseType> {
 

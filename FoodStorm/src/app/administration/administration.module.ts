@@ -11,6 +11,7 @@ import { TypeIngredientService } from './type-ingredient/type-ingredient.service
 import { TypeIngredientCreateComponent } from '../administration/type-ingredient/type-ingredient-create.component';
 import { AlertService } from '../_services/alert.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TypeIngredientUpdateComponent } from './type-ingredient/type-ingredient-update.component';
 
 
 
@@ -21,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  declarations: [IngredientListComponent, IngredientDetailComponent, IngredientUpdateComponent, TypeIngredientListComponent, TypeIngredientCreateComponent],
+  declarations: [IngredientListComponent, IngredientDetailComponent, IngredientUpdateComponent, TypeIngredientListComponent, TypeIngredientCreateComponent, TypeIngredientUpdateComponent],
   providers: [IngredientService, TypeIngredientService, FormBuilder, AlertService],
   exports:[    BrowserAnimationsModule]
 })
