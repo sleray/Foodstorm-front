@@ -12,7 +12,7 @@ import { AlertType } from '../../_models/alert';
 })
 export class TypeIngredientUpdateComponent implements OnInit {
   pageTitle: string = "Modification d'un type d'ingrédient";
-  typeIngredient: TypeIngredient;
+  typeIngredient: TypeIngredient = new TypeIngredient();
   constructor(private route: ActivatedRoute, private router: Router, private service: TypeIngredientService, private alertService :AlertService) { }
   
   
@@ -26,10 +26,15 @@ export class TypeIngredientUpdateComponent implements OnInit {
   }
   onSubmit() { 
     console.log("creation d'un type d'ingredient ! "+this.typeIngredient);
-    this.service.create(this.typeIngredient).subscribe(res => {
+    this.service.update(this.typeIngredient).subscribe(res => {
       console.log(res);
       this.alertService.saveAlert(AlertType.Success,"Le type d'ingrédient a bien été modifié !");
       this.router.navigateByUrl("/admin/typeingredients");
     });
+}
+
+back(){
+  console.log("Annulation");
+  this.router.navigateByUrl("/admin/typeingredients");
 }
 }

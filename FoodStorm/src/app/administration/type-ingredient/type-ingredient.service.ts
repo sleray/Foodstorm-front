@@ -43,6 +43,7 @@ export class TypeIngredientService {
   
     update(typeIngredient: TypeIngredient): Observable<EntityResponseType> {
       const copy = this.convert(typeIngredient);
+      console.log("copy :"+typeIngredient);
       return this._http
         .put<TypeIngredient>(this.resourceUrl, copy, { observe: 'response' })
         .map((res: EntityResponseType) => this.convertResponse(res));

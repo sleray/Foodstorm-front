@@ -2,7 +2,7 @@
     <div class="row align-self-center  justify-content-center   ">
 <div class="card card-primary w-100">
     <div class="card-heading">
-      {{ pageTitle }}
+      <h3>{{ pageTitle }}</h3>
     </div>
     <div class="card-body">
       
@@ -14,7 +14,8 @@
     
        
           <div class="form-group">
-              <button type="submit" [disabled]="typeIngredientForm.form.pristine || typeIngredientForm.form.invalid" class="btn btn-primary">Ajouter</button>
+              <button type="submit" [disabled]="typeIngredientForm.form.pristine || typeIngredientForm.form.invalid" class="btn btn-primary"><i class="far fa-save"></i> Ajouter</button>
+              <button type="button" (click)="back()"  class="btn"> <i class="fas fa-undo"></i> Retour</button>
           </div>
       </form>
     </div>

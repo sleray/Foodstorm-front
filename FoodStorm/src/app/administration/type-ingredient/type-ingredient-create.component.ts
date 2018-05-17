@@ -31,4 +31,9 @@ export class TypeIngredientCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+  back(){
+    console.log("Annulation");
+    this.router.navigateByUrl("/admin/typeingredients");
+  }
+
 }
