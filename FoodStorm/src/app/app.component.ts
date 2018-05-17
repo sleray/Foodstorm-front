@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
 
 
-  constructor(private _ss: SigninService,private router: Router) {
+  constructor(private _ss: SigninService, private router: Router) {
 
   }
 
@@ -23,7 +23,18 @@ export class AppComponent implements OnInit {
     this._ss.logout();
     this.router.navigate(['/']);
   }
-
+  isConnected() {
+    if (this.getSignService().getToken()) {
+      if (this.getSignService().isTokenExpired()) {
+        this.logout();
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
   ngOnInit() {
 
   }
