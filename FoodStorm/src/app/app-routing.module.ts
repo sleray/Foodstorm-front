@@ -13,7 +13,7 @@ import { TypeIngredientListComponent } from './administration/type-ingredient/ty
 import { TypeIngredientCreateComponent } from './administration/type-ingredient/type-ingredient-create.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { IsAlreadyLoggedGuard } from './guard/is-already-logged.guard';
-import { RandomMenuComponent } from './random-menu/random-menu.component';
+import { RandomMenuComponent } from './menu/random-menu.component';
 
 const routes: Routes = [  
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuardService] },  

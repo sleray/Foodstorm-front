@@ -14,11 +14,12 @@ import { AuthInterceptor } from './signin/authinterceptor';
 import { AdministrationModule } from './administration/administration.module';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
-import { RandomMenuComponent } from './random-menu/random-menu.component';
+import { RandomMenuComponent } from './menu/random-menu.component';
 import { AlertComponent } from './_directives/alert.component';
 import { AlertService } from './_services/alert.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GuardModule } from './guard/guard.module';
+import { RandomMenuService } from './menu/menu.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { GuardModule } from './guard/guard.module';
     GuardModule
 
   ],
-  providers: [SigninService,HttpClientModule,AlertService,
+  providers: [SigninService,HttpClientModule,AlertService,RandomMenuService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

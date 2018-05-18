@@ -1,4 +1,4 @@
-export interface IIngredient {
+export class IIngredient {
     id : number;
     name : string;
     imageUrl : string;
@@ -9,7 +9,7 @@ export class TypeIngredient {
     id : number;
     name : string;
 }
-export interface IGroupIngredient {
+export class IGroupIngredient {
     id : number;
     name : string;
 }
