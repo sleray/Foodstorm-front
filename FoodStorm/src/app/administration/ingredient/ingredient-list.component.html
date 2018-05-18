@@ -1,8 +1,8 @@
 <div class="container ">
-    <div class="row align-self-center  justify-content-center">
-<div class='card card-primary w-100'>
+        <div class="row align-self-center  justify-content-center   ">
+      <div class='card card-primary w-100'>
     <div class='card-heading'>
-       <h2> {{pageTitle}}</h2>
+       <h3> {{pageTitle}}</h3>
        <button id="create-entity" class="btn btn-primary float-right" [routerLink]="['/ingredients/new']">
         <span class="fa fa-plus"></span>
         <span> Nouveau </span>
@@ -43,6 +43,7 @@
                         <th>Nom</th>
                         <th>Type</th>
                         <th>Groupe</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,13 +57,20 @@
                                 [style.margin.px]='imageMargin'>
                         </td>
                         <td>{{ingredient.id}}</td>
-                        <td><a [routerLink]="['/ingredients', ingredient.id]">
+                        <td><a [routerLink]="['/admin/ingredients', ingredient.id]">
                                 {{ ingredient.name }}
                             </a>
 						</td>
                         <td>{{ ingredient.type.name }}</td>
-                        <td>{{ ingredient.groups.name }}</td>
-                        
+                        <td><span *ngFor='let group of ingredient.groups'>
+                            {{group.name}}<br>
+                        </span></td>
+                        <td><a [routerLink]="['/admin/ingredients/edit', ingredient.id]" class="btn btn-primary">
+                            <i class="fas fa-edit"></i>
+                            </a></td>
+                          <td><button (click)="delete(ingredient.id)"  class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i>
+                            </button></td>
                         
                     </tr>
                 </tbody>

@@ -17,10 +17,11 @@ export class GroupeIngredientUpdateComponent implements OnInit {
   
   
   ngOnInit() {
+    
     this.route.params.subscribe(params => {
       this.service.getGroupeIngredient(params['id']).subscribe(res => {
         this.groupeIngredient = res;
-        console.log('get :'+res);
+        console.log("OnInit, "+this.groupeIngredient.id+" ; "+this.groupeIngredient.name);
       });
     });
   }

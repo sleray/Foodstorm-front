@@ -20,6 +20,7 @@ import { GroupeIngredientCreateComponent } from '../administration/groupe-ingred
 import { GroupeIngredientService } from './groupe-ingredient/groupe-ingredient.service';
 
 import { AlertService } from '../_services/alert.service';
+import { IngredientCreateComponent } from './ingredient/ingredient-create.component';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { AlertService } from '../_services/alert.service';
   ],
   declarations: [IngredientListComponent, IngredientDetailComponent, IngredientUpdateComponent, 
     TypeIngredientListComponent, TypeIngredientCreateComponent, TypeIngredientUpdateComponent,
-    GroupeIngredientListComponent, GroupeIngredientCreateComponent, GroupeIngredientUpdateComponent],
+    GroupeIngredientListComponent, GroupeIngredientCreateComponent, GroupeIngredientUpdateComponent, IngredientCreateComponent],
   providers: [IngredientService, TypeIngredientService, GroupeIngredientService,FormBuilder, AlertService],
   exports:[    BrowserAnimationsModule]
 })

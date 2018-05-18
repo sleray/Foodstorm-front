@@ -14,6 +14,9 @@ import { TypeIngredientCreateComponent } from './administration/type-ingredient/
 import { AuthGuardService } from './guard/auth-guard.service';
 import { IsAlreadyLoggedGuard } from './guard/is-already-logged.guard';
 import { TypeIngredientUpdateComponent } from './administration/type-ingredient/type-ingredient-update.component';
+import { GroupeIngredientUpdateComponent } from './administration/groupe-ingredient/groupe-ingredient-update.component';
+import { GroupeIngredientListComponent } from './administration/groupe-ingredient/groupe-ingredient-list.component';
+import { GroupeIngredientCreateComponent } from './administration/groupe-ingredient/groupe-ingredient-create.component';
 
 const routes: Routes = [  
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuardService] },  
@@ -26,6 +29,9 @@ const routes: Routes = [
   { path: 'admin/typeingredients',  component: TypeIngredientListComponent },  
   { path: 'admin/typeingredients/new',  component: TypeIngredientCreateComponent },  
   { path: 'admin/typeingredients/edit/:id',  component: TypeIngredientUpdateComponent }, 
+  { path: 'admin/groupeingredients',  component: GroupeIngredientListComponent },  
+  { path: 'admin/groupeingredients/new',  component: GroupeIngredientCreateComponent },  
+  { path: 'admin/groupeingredients/edit/:id',  component: GroupeIngredientUpdateComponent },   
   { path: '', component: SigninComponent,  pathMatch: 'full', canActivate: [IsAlreadyLoggedGuard]}
 ];
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
@@ -13,8 +13,6 @@ export type EntityArrayResponseType = HttpResponse<IIngredient[]>;
 @Injectable()
 export class IngredientService {
 
-    private _contribUrl = './api/ingredients.json';
-    //TODO set a global variable, varying from env.
     private resourceUrl = 'ingredients/';
     
     constructor(private _http: HttpClient) { }
@@ -44,7 +42,18 @@ export class IngredientService {
         .put<IIngredient>(this.resourceUrl, copy, { observe: 'response' })
         .map((res: EntityResponseType) => this.convertResponse(res));
     }
-
+//This header (responseType : text) is required when back-end returns a string or Void.
+delete(id) {
+  const uri = this.resourceUrl + id;
+  var retour = this
+  ._http
+  .delete(uri,     {
+    headers: new HttpHeaders().set('Content-Type', 'application/json'),
+    responseType: 'text' 
+ }).catch(this.handleError);
+  console.log('retour :'+retour);    
+  return retour;
+}
     private handleError(err: HttpErrorResponse) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

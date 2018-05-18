@@ -33,7 +33,7 @@ export class IngredientDetailComponent implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
-  onBack(): void {
+  back(): void {
     this._router.navigate(['/admin/ingredients']);
   }
 }

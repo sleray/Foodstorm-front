@@ -1,6 +1,7 @@
 import { Component, OnInit, transition, trigger, animate, style, state } from '@angular/core';
 import { IngredientService } from './ingredient.service';
 import { IIngredient } from './ingredient';
+import { AlertService } from '../../_services/alert.service';
 
 @Component({
   selector: 'app-ingredient-list',
@@ -45,7 +46,7 @@ export class IngredientListComponent implements OnInit {
       filteredIngredients: IIngredient[];
       ingredients: IIngredient[] = [];
   
-      constructor(private _ingredientService: IngredientService) {
+      constructor(private service: IngredientService, private alertService : AlertService) {
   
       }
   
@@ -62,7 +63,7 @@ export class IngredientListComponent implements OnInit {
       }
   
       ngOnInit(): void {
-          this._ingredientService.getIngredients()
+          this.service.getIngredients()
                   .subscribe(ingredients => {
                       this.ingredients = ingredients;
                       this.filteredIngredients = this.ingredients;
@@ -81,7 +82,17 @@ export class IngredientListComponent implements OnInit {
     this.fadeDirection == 'fadeOut' ? this.fadeIn() : this.fadeOut();
     this.toggleImage(); //to update eye image and title
   }
+  delete(id : number){
+    this.service.delete(id)
+    .subscribe(()=> {
+      this.service.getIngredients().subscribe(res => {
+        this.ingredients = res;
+        this.filteredIngredients = this.ingredients;
+        this.alertService.warn("L'ingrédient a bien été supprimé !");
 
+      });
+    });
+  }
      
   }
   
