@@ -17,6 +17,7 @@ import { TypeIngredientUpdateComponent } from './administration/type-ingredient/
 import { GroupeIngredientUpdateComponent } from './administration/groupe-ingredient/groupe-ingredient-update.component';
 import { GroupeIngredientListComponent } from './administration/groupe-ingredient/groupe-ingredient-list.component';
 import { GroupeIngredientCreateComponent } from './administration/groupe-ingredient/groupe-ingredient-create.component';
+import { IngredientCreateComponent } from './administration/ingredient/ingredient-create.component';
 
 const routes: Routes = [  
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuardService] },  
@@ -24,8 +25,8 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'about/contributors', component: ContributorsComponent },
   { path: 'admin/ingredients', component: IngredientListComponent },
-  { path: 'admin/ingredients/:id',  component: IngredientDetailComponent },
-  { path: 'admin/ingredients/new',  component: IngredientUpdateComponent },
+  { path: 'admin/ingredients/edit/:id',  component: IngredientDetailComponent },
+  { path: 'admin/ingredients/new',  component: IngredientCreateComponent },
   { path: 'admin/typeingredients',  component: TypeIngredientListComponent },  
   { path: 'admin/typeingredients/new',  component: TypeIngredientCreateComponent },  
   { path: 'admin/typeingredients/edit/:id',  component: TypeIngredientUpdateComponent }, 

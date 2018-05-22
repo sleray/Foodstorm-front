@@ -3,7 +3,7 @@
       <div class='card card-primary w-100'>
     <div class='card-heading'>
        <h3> {{pageTitle}}</h3>
-       <button id="create-entity" class="btn btn-primary float-right" [routerLink]="['/ingredients/new']">
+       <button id="create-entity" class="btn btn-primary float-right" [routerLink]="['/admin/ingredients/new']">
         <span class="fa fa-plus"></span>
         <span> Nouveau </span>
     </button>
@@ -27,12 +27,12 @@
                     <tr>
                         <th>
                             <img *ngIf='showImage'
-                                src='../../assets/hideimage.png'
+                                src='../assets/hideimage.png'
                                 title='Hide images'
                                 [style.width.px]='imageWidth'
                                 [style.margin.px]='imageMargin' (click)='toggle()'>
                             <img *ngIf='!showImage'
-                                src='../../assets/showimage.png'
+                                src='../assets/showimage.png'
                                 title='Show images'
                                 [style.width.px]='imageWidth'
                                 [style.margin.px]='imageMargin' (click)='toggle()'>                                
@@ -57,7 +57,7 @@
                                 [style.margin.px]='imageMargin'>
                         </td>
                         <td>{{ingredient.id}}</td>
-                        <td><a [routerLink]="['/admin/ingredients', ingredient.id]">
+                        <td><a [routerLink]="['/admin/ingredients/view', ingredient.id]">
                                 {{ ingredient.name }}
                             </a>
 						</td>

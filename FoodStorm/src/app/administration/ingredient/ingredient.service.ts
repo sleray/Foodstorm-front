@@ -5,10 +5,10 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-import { IIngredient } from './ingredient';
+import { Ingredient } from './ingredient';
 
-export type EntityResponseType = HttpResponse<IIngredient>;
-export type EntityArrayResponseType = HttpResponse<IIngredient[]>;
+export type EntityResponseType = HttpResponse<Ingredient>;
+export type EntityArrayResponseType = HttpResponse<Ingredient[]>;
 
 @Injectable()
 export class IngredientService {
@@ -18,28 +18,28 @@ export class IngredientService {
     constructor(private _http: HttpClient) { }
 
 
-    getIngredients(): Observable<IIngredient[]> {
-        return this._http.get<IIngredient[]>(this.resourceUrl)
+    getIngredients(): Observable<Ingredient[]> {
+        return this._http.get<Ingredient[]>(this.resourceUrl)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    getIngredient(id: number): Observable<IIngredient> {
+    getIngredient(id: number): Observable<Ingredient> {
       return this.getIngredients()
-          .map((ingredients: IIngredient[]) => ingredients.find(p => p.id === id));
+          .map((ingredients: Ingredient[]) => ingredients.find(p => p.id === id));
     }
 
-    create(ingredient: IIngredient): Observable<EntityResponseType> {
+    create(ingredient: Ingredient): Observable<EntityResponseType> {
       const copy = this.convert(ingredient);
       return this._http
-        .post<IIngredient>(this.resourceUrl, copy, { observe: 'response' })
+        .post<Ingredient>(this.resourceUrl, copy, { observe: 'response' })
         .map((res: EntityResponseType) => this.convertResponse(res));
     }
   
-    update(ingredient: IIngredient): Observable<EntityResponseType> {
+    update(ingredient: Ingredient): Observable<EntityResponseType> {
       const copy = this.convert(ingredient);
       return this._http
-        .put<IIngredient>(this.resourceUrl, copy, { observe: 'response' })
+        .put<Ingredient>(this.resourceUrl, copy, { observe: 'response' })
         .map((res: EntityResponseType) => this.convertResponse(res));
     }
 //This header (responseType : text) is required when back-end returns a string or Void.
@@ -71,13 +71,13 @@ delete(id) {
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {
-      const body: IIngredient = this.convertItemFromServer(res.body);
+      const body: Ingredient = this.convertItemFromServer(res.body);
       return res.clone({ body });
     }
   
     private convertArrayResponse(res: EntityArrayResponseType): EntityArrayResponseType {
-      const jsonResponse: IIngredient[] = res.body;
-      const body: IIngredient[] = [];
+      const jsonResponse: Ingredient[] = res.body;
+      const body: Ingredient[] = [];
       for (let i = 0; i < jsonResponse.length; i++) {
         body.push(this.convertItemFromServer(jsonResponse[i]));
       }
@@ -87,15 +87,15 @@ delete(id) {
     /**
      * Convert a returned JSON object to IIngredient.
      */
-    private convertItemFromServer(ingredient: IIngredient): IIngredient {
-      const copy: IIngredient = Object.assign({}, ingredient, {});
+    private convertItemFromServer(ingredient: Ingredient): Ingredient {
+      const copy: Ingredient = Object.assign({}, ingredient, {});
       return copy;
     }
   /**
    * Convert a IIngredient to a JSON which can be sent to the server.
    */
-  private convert(ingredient: IIngredient): IIngredient {
-    const copy: IIngredient = Object.assign({}, ingredient, {});
+  private convert(ingredient: Ingredient): Ingredient {
+    const copy: Ingredient = Object.assign({}, ingredient, {});
     return copy;
   }
 }

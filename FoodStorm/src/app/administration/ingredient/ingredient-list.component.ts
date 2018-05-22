@@ -1,6 +1,6 @@
 import { Component, OnInit, transition, trigger, animate, style, state } from '@angular/core';
 import { IngredientService } from './ingredient.service';
-import { IIngredient } from './ingredient';
+import { Ingredient } from './ingredient';
 import { AlertService } from '../../_services/alert.service';
 
 @Component({
@@ -43,16 +43,16 @@ export class IngredientListComponent implements OnInit {
           this.filteredIngredients = this.listFilter ? this.performFilter(this.listFilter) : this.ingredients;
       }
   
-      filteredIngredients: IIngredient[];
-      ingredients: IIngredient[] = [];
+      filteredIngredients: Ingredient[];
+      ingredients: Ingredient[] = [];
   
       constructor(private service: IngredientService, private alertService : AlertService) {
   
       }
   
-      performFilter(filterBy: string): IIngredient[] {
+      performFilter(filterBy: string): Ingredient[] {
           filterBy = filterBy.toLocaleLowerCase();
-          return this.ingredients.filter((ingredient: IIngredient) =>
+          return this.ingredients.filter((ingredient: Ingredient) =>
           ingredient.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
       }
   

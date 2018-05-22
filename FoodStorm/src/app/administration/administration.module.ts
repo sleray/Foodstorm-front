@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { IngredientListComponent } from './ingredient/ingredient-list.component';
 import { IngredientDetailComponent } from './ingredient/ingredient-detail.component';
+import { IngredientCreateComponent } from './ingredient/ingredient-create.component';
 import { IngredientUpdateComponent } from './ingredient/ingredient-update.component';
 import { IngredientService } from './ingredient/ingredient.service';
 
@@ -20,7 +21,7 @@ import { GroupeIngredientCreateComponent } from '../administration/groupe-ingred
 import { GroupeIngredientService } from './groupe-ingredient/groupe-ingredient.service';
 
 import { AlertService } from '../_services/alert.service';
-import { IngredientCreateComponent } from './ingredient/ingredient-create.component';
+
 
 
 @NgModule({

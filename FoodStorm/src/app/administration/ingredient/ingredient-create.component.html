@@ -1,41 +1,52 @@
 <div class='container'>
-    <div class='card card-primary shadow' *ngIf='ingredient'>
-      <div class='card-heading'>
-         <h3> {{pageTitle}}</h3>
-      </div>
-    
-      <div class='card-body border shadow'>
-          <div class='row'>
-              <div class='col-md-6'>
-                  <div class='row'>
-                      <div class='col-md-3'>Nom:</div>
-                      <div class='col-md-6'>{{ingredient.name}}</div>
-                  </div>
-                  <div class='row'>
-                      <div class='col-md-3'>Type:</div>
-                      <div class='col-md-6'>{{ingredient.type.name}}</div>
-                  </div>
-                  <div class='row'>
-                      <div class='col-md-3'>Groupes:</div>
-                      <div class='col-md-6'><span *ngFor='let group of ingredient.groups'>
-                            {{group.name}}<br>
-                        </span></div>
-                  </div>
-                  
-              </div>
-    
-              <div class='col-md-6'>
-                  <img class='center-block img-responsive' 
-                       [style.width.px]='200' 
-                       [style.margin.px]='2' 
-                       [src]='ingredient.imageUrl'
-                       [title]='ingredient.name'>
-              </div>
-          </div>
-      </div>
-    
-      <div class='card-footer'>
-            <button type="button" (click)="back()"  class="btn"> <i class="fas fa-undo"></i> Retour</button>
-      </div>
+  <div class='card card-primary shadow'>
+    <div class='card-heading'>
+      <h3> {{pageTitle}}</h3>
     </div>
+
+    <div class='card-body border shadow'>
+      <form (ngSubmit)="onSubmit()" #ingredientForm="ngForm">
+        <div class='row'>
+          <div class='col-md-6'>
+            <div class='row'>
+              <div class='col-md-4'>Nom:</div>
+              <div class='col-md-6'>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="ingredient.name" name="name">
+              </div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>Url de l'image :</div>
+                <div class='col-md-6'>
+                  <input type="text" class="form-control" id="imageUrl" required [(ngModel)]="ingredient.imageUrl" name="imageUrl">
+                </div>
+              </div>            
+            <div class='row'>
+              <div class='col-md-4'>Type:</div>
+              <div class='col-md-6'>{{ingredient.type.name}}</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-4'>Groupes:</div>
+              <div class='col-md-6'>
+                <span *ngFor='let group of ingredient.groups'>
+                  {{group.name}}
+                  <br>
+                </span>
+              </div>
+     
+      </div>
+
+      </div>
+
+      <div class='col-md-6'>
+        <img class='center-block img-responsive' [style.width.px]='200' [style.margin.px]='2' [src]='ingredient.imageUrl' [title]='ingredient.name'>
+      </div>
+      </div>
+    </form>
     </div>
+
+    <div class='card-footer'>
+      <button type="button" (click)="back()" class="btn">
+        <i class="fas fa-undo"></i> Retour</button>
+    </div>
+  </div>
+</div>
