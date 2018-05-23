@@ -9,11 +9,11 @@
             </div>
 
             <table class="table">
-                <tr *ngFor='let ingredient of ingredients'>
-                   <td>bla</td>
-                   <td>{{ingredient.name}}</td>
-                </tr>
-            </table>
+                    <tr *ngFor='let ingredient of ingredients'>
+                        <td *ngFor='let group of ingredient.groups'>{{group.name}}</td>
+                        <td>{{ingredient.name}}</td>
+                    </tr>
+                </table>
 
             <div class="text-center">
                 <button type="submit" (click)="regenerateMenu()" class="btn green darken-1 white-text">Générer un nouveau menu</button>
