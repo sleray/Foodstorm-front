@@ -1,3 +1,4 @@
+<form (ngSubmit)="onSubmit()" #ingredientForm="ngForm">
 <div class='container'>
   <div class='card card-primary shadow'>
     <div class='card-heading'>
@@ -5,7 +6,7 @@
     </div>
 
     <div class='card-body border shadow'>
-      <form (ngSubmit)="onSubmit()" #ingredientForm="ngForm">
+
         <div class='row'>
           <div class='col-md-6'>
             <div class='row'>
@@ -22,16 +23,26 @@
               </div>            
             <div class='row'>
               <div class='col-md-4'>Type:</div>
-              <div class='col-md-6'>{{ingredient.type.name}}</div>
+              <div class='col-md-6'>
+
+                  <select [(ngModel)]="ingredient.type" name="type">
+                      <option *ngFor="let t of listTypes" [ngValue]="t">{{t.name}}</option>
+                  </select>
+            </div>
             </div>
             <div class='row'>
               <div class='col-md-4'>Groupes:</div>
-              <div class='col-md-6'>
-                <span *ngFor='let group of ingredient.groups'>
-                  {{group.name}}
-                  <br>
-                </span>
+
+              <div class='col-md-8'>
+
+                  <select multiple name="selectedGroups" [(ngModel)]="ingredient.groups" style='overflow:hidden' size="5">
+                      <option *ngFor="let g of listGroupes" [ngValue]="g">
+                           {{ g.name }}
+                      </option>
+                </select> 
+                  
               </div>
+              
      
       </div>
 
@@ -41,12 +52,14 @@
         <img class='center-block img-responsive' [style.width.px]='200' [style.margin.px]='2' [src]='ingredient.imageUrl' [title]='ingredient.name'>
       </div>
       </div>
-    </form>
+
     </div>
 
     <div class='card-footer'>
-      <button type="button" (click)="back()" class="btn">
-        <i class="fas fa-undo"></i> Retour</button>
+      <button type="submit" [disabled]="ingredientForm.form.pristine || ingredientForm.form.invalid" class="btn btn-primary"><i class="far fa-save"></i> Ajouter</button>
+      <button type="button" (click)="back()" class="btn"> <i class="fas fa-undo"></i> Retour</button>
     </div>
   </div>
 </div>
+</form>
+url d'image pour démo : https://www.atelierdeschefs.com/media/recette-d2333-le-mojito-original.jpg
