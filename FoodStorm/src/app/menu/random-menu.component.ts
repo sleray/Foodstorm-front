@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IngredientService } from '../administration/ingredient/ingredient.service';
-import { RandomMenuService } from './menu.service';
+import { MenuService } from './menu.service';
 import { IIngredient, IGroupIngredient } from '../administration/ingredient/ingredient';
 
 @Component({
@@ -10,19 +10,13 @@ import { IIngredient, IGroupIngredient } from '../administration/ingredient/ingr
 })
 export class RandomMenuComponent implements OnInit {
 
-  // private starter;
-  // private mainCourse;
-  // private accompaniment;
-  // private dessert;
-
   ingredients: IIngredient[] = [];
-  groups: IGroupIngredient[] = [];
   errorMessage: string;
   
-  constructor(private randomMenuSevice : RandomMenuService) { }
+  constructor(private menuSevice : MenuService) { }
 
   ngOnInit() : void {
-    this.randomMenuSevice.getRandomMenu()
+    this.menuSevice.getRandomMenu()
       .subscribe(ingredients => {
         this.ingredients = ingredients;        
       },

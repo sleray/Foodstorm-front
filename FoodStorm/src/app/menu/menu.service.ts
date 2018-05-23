@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
-export class RandomMenuService {
+export class MenuService {
 
   private menuUrl = 'menu/random';
 

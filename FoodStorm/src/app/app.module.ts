@@ -19,7 +19,7 @@ import { AlertComponent } from './_directives/alert.component';
 import { AlertService } from './_services/alert.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GuardModule } from './guard/guard.module';
-import { RandomMenuService } from './menu/menu.service';
+import { MenuService } from './menu/menu.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { RandomMenuService } from './menu/menu.service';
     GuardModule
 
   ],
-  providers: [SigninService,HttpClientModule,AlertService,RandomMenuService,
+  providers: [SigninService,HttpClientModule,AlertService,MenuService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
