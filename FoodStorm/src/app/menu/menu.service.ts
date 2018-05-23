@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IIngredient } from '../administration/ingredient/ingredient';
+import { Ingredient } from '../administration/ingredient/ingredient';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
@@ -10,8 +10,8 @@ export class MenuService {
 
     constructor(private http:HttpClient) { }
 
-  getRandomMenu(): Observable<IIngredient[]>{
-    return this.http.get<IIngredient[]>(this.menuUrl)
+  getRandomMenu(): Observable<Ingredient[]>{
+    return this.http.get<Ingredient[]>(this.menuUrl)
       .do(data => console.log('randomMenu' + JSON.stringify(data)))
       .catch(this.handleError);
 

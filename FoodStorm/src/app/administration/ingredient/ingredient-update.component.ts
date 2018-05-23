@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IIngredient } from './ingredient';
+import { Ingredient } from './ingredient';
 import { ActivatedRoute } from '@angular/router';
 import { IngredientService } from './ingredient.service';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
@@ -14,7 +14,7 @@ export class IngredientUpdateComponent implements OnInit {
 
   //New or update
   pageTitle : string;
-  ingredient : IIngredient;
+  ingredient : Ingredient;
   isSaving: boolean;
 
   constructor(private _route: ActivatedRoute, private _ingredientService : IngredientService) { 
@@ -48,11 +48,11 @@ export class IngredientUpdateComponent implements OnInit {
     }
   }
 
-  private subscribeToSaveResponse(result: Observable<HttpResponse<IIngredient>>) {
-    result.subscribe((res: HttpResponse<IIngredient>) => this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
+  private subscribeToSaveResponse(result: Observable<HttpResponse<Ingredient>>) {
+    result.subscribe((res: HttpResponse<Ingredient>) => this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
   }
 
-  private onSaveSuccess(result: IIngredient) {
+  private onSaveSuccess(result: Ingredient) {
     this.isSaving = false;
     this.previousState();
   }

@@ -5,48 +5,46 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-import { TypeIngredient } from '../ingredient/ingredient';
+import { GroupeIngredient } from '../ingredient/ingredient';
 
-export type EntityResponseType = HttpResponse<TypeIngredient>;
-export type EntityArrayResponseType = HttpResponse<TypeIngredient[]>;
+export type EntityResponseType = HttpResponse<GroupeIngredient>;
+export type EntityArrayResponseType = HttpResponse<GroupeIngredient[]>;
 
 @Injectable()
-export class TypeIngredientService {
+export class GroupeIngredientService {
 
-    private _contribUrl = './api/typeingredients.json';
-    //TODO set a global variable, varying from env.
-    private resourceUrl = 'typeingredients/';
+    private resourceUrl = 'groupingredients/';
     
 
     constructor(private _http: HttpClient) { }
 
-    getListTypeIngredients(): Observable<TypeIngredient[]> {
+    getListGroupeIngredients(): Observable<GroupeIngredient[]> {
 
-      return this._http.get<TypeIngredient[]>(this.resourceUrl)
+      return this._http.get<GroupeIngredient[]>(this.resourceUrl)
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
     }
-    getTypeIngredient(id : number): Observable<TypeIngredient> {
+    getGroupeIngredient(id : number): Observable<GroupeIngredient> {
 
-      return this._http.get<TypeIngredient[]>(this.resourceUrl+"/"+id)
+      return this._http.get<GroupeIngredient[]>(this.resourceUrl+"/"+id)
       .do(data => console.log('get('+id+'): ' + JSON.stringify(data)))
       .catch(this.handleError);
     }
 
-    create(typeIngredient: TypeIngredient): Observable<EntityResponseType> {
+    create(groupeIngredient: GroupeIngredient): Observable<EntityResponseType> {
 
-      const copy = this.convert(typeIngredient);
+      const copy = this.convert(groupeIngredient);
       console.log("convert id :"+copy.id+" ; name : "+copy.name); 
       return this._http
-        .post<TypeIngredient>(this.resourceUrl, copy,  {observe: 'response'} )
+        .post<GroupeIngredient>(this.resourceUrl, copy,  {observe: 'response'} )
         .map((res: EntityResponseType) => this.convertResponse(res));
     }
   
-    update(typeIngredient: TypeIngredient): Observable<EntityResponseType> {
-      const copy = this.convert(typeIngredient);
+    update(groupeIngredient: GroupeIngredient): Observable<EntityResponseType> {
+      const copy = this.convert(groupeIngredient);
       console.log("convert id :"+copy.id+" ; name : "+copy.name); 
       return this._http
-        .put<TypeIngredient>(this.resourceUrl, copy, { observe: 'response' })
+        .put<GroupeIngredient>(this.resourceUrl, copy, { observe: 'response' })
         .map((res: EntityResponseType) => this.convertResponse(res));
     }
 //This header (responseType : text) is required when back-end returns a string or Void.
@@ -79,13 +77,13 @@ export class TypeIngredientService {
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {
-      const body: TypeIngredient = this.convertItemFromServer(res.body);
+      const body: GroupeIngredient = this.convertItemFromServer(res.body);
       return res.clone({ body });
     }
   
     private convertArrayResponse(res: EntityArrayResponseType): EntityArrayResponseType {
-      const jsonResponse: TypeIngredient[] = res.body;
-      const body: TypeIngredient[] = [];
+      const jsonResponse: GroupeIngredient[] = res.body;
+      const body: GroupeIngredient[] = [];
       for (let i = 0; i < jsonResponse.length; i++) {
         body.push(this.convertItemFromServer(jsonResponse[i]));
       }
@@ -93,17 +91,17 @@ export class TypeIngredientService {
     }
   
     /**
-     * Convert a returned JSON object to ITypeIngredient.
+     * Convert a returned JSON object to IGroupeIngredient.
      */
-    private convertItemFromServer(typeIngredient: TypeIngredient): TypeIngredient {
-      const copy: TypeIngredient = Object.assign({}, typeIngredient, {});
+    private convertItemFromServer(groupeIngredient: GroupeIngredient): GroupeIngredient {
+      const copy: GroupeIngredient = Object.assign({}, groupeIngredient, {});
       return copy;
     }
   /**
-   * Convert a ITypeIngredient to a JSON which can be sent to the server.
+   * Convert a IGroupeIngredient to a JSON which can be sent to the server.
    */
-  private convert(typeIngredient: TypeIngredient): TypeIngredient {
-    const copy: TypeIngredient = Object.assign({}, typeIngredient, {});
+  private convert(groupeIngredient: GroupeIngredient): GroupeIngredient {
+    const copy: GroupeIngredient = Object.assign({}, groupeIngredient, {});
     
     return copy;
   }

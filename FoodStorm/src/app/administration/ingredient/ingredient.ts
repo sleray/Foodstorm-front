@@ -1,15 +1,15 @@
-export class IIngredient {
+export class Ingredient {
     id : number;
     name : string;
     imageUrl : string;
     type : TypeIngredient;
-    groups : IGroupIngredient[];
+    groups : GroupeIngredient[];
 }
 export class TypeIngredient {
     id : number;
     name : string;
 }
-export class IGroupIngredient {
+export class GroupeIngredient {
     id : number;
     name : string;
 }

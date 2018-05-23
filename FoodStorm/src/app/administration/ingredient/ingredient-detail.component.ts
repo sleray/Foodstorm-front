@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IIngredient } from './ingredient';
+import { Ingredient } from './ingredient';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IngredientService } from './ingredient.service';
 
@@ -12,7 +12,7 @@ export class IngredientDetailComponent implements OnInit {
 
   pageTitle: string = "Détail de l'ingrédient : ";
   errorMessage: string;
-  ingredient: IIngredient;
+  ingredient: Ingredient;
 
   constructor(private _route: ActivatedRoute,
     private _router: Router,
@@ -33,7 +33,7 @@ export class IngredientDetailComponent implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
-  onBack(): void {
+  back(): void {
     this._router.navigate(['/admin/ingredients']);
   }
 }

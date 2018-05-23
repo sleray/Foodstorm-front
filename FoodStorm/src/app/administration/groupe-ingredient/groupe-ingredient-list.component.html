@@ -3,7 +3,7 @@
 <div class='card card-primary w-100'>
   <div class='card-heading '>
      <h2> {{pageTitle}}</h2>
-     <button id="create-entity" class="btn btn-primary float-right" [routerLink]="['/admin/typeingredients/new']">
+     <button id="create-entity" class="btn btn-primary float-right" [routerLink]="['/admin/groupeingredients/new']">
       <span class="fa fa-plus"></span>
       <span> Nouveau  </span>
   </button>
@@ -19,13 +19,13 @@
   </thead>
 
   <tbody>
-      <tr  *ngFor="let typeingredient of typeIngredients">
-          <td>{{ typeingredient.id }}</td>
-          <td>{{ typeingredient.name }}</td>
-          <td><a [routerLink]="['/admin/typeingredients/edit', typeingredient.id]" class="btn btn-primary">
+      <tr  *ngFor="let groupeingredient of groupeIngredients">
+          <td>{{ groupeingredient.id }}</td>
+          <td>{{ groupeingredient.name }}</td>
+          <td><a [routerLink]="['/admin/groupeingredients/edit', groupeingredient.id]" class="btn btn-primary">
             <i class="fas fa-edit"></i>
             Modifier</a></td>
-          <td><button (click)="delete(typeingredient.id)"  class="btn btn-danger">
+          <td><button (click)="delete(groupeingredient.id)"  class="btn btn-danger">
             <i class="fas fa-trash-alt"></i>
             Supprimer</button></td>
       </tr>

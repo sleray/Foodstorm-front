@@ -1,6 +1,7 @@
 import { Component, OnInit, transition, trigger, animate, style, state } from '@angular/core';
 import { IngredientService } from './ingredient.service';
-import { IIngredient } from './ingredient';
+import { Ingredient } from './ingredient';
+import { AlertService } from '../../_services/alert.service';
 
 @Component({
   selector: 'app-ingredient-list',
@@ -8,15 +9,17 @@ import { IIngredient } from './ingredient';
   styleUrls: ['./ingredient-list.component.scss'],
   animations: [
     trigger('fadeAnimation', [
+      state('fadeIn',style({ opacity: 1 })),
+      state('fadeOut',style({ opacity: 0 })),
       transition('* => fadeIn', [
         // fade in Animation
         style({ opacity: 0 }),
-        animate(4000, style({ opacity: 1 }))
+        animate(3000, style({ opacity: 1 }))
         
       ]),
       transition('* => fadeOut', [
         // fade out Animation
-        animate(4000, style({ opacity: 0 }))
+        animate(3000, style({ opacity: 0 }))
         
       ])
     ])
@@ -25,7 +28,7 @@ import { IIngredient } from './ingredient';
 export class IngredientListComponent implements OnInit {
 
       pageTitle: string = 'Liste des ingrédients';
-      fadeDirection='';
+      fadeDirection='fadeIn';
       imageWidth: number = 50;
       imageMargin: number = 2;
       showImage: boolean = false;
@@ -40,16 +43,16 @@ export class IngredientListComponent implements OnInit {
           this.filteredIngredients = this.listFilter ? this.performFilter(this.listFilter) : this.ingredients;
       }
   
-      filteredIngredients: IIngredient[];
-      ingredients: IIngredient[] = [];
+      filteredIngredients: Ingredient[];
+      ingredients: Ingredient[] = [];
   
-      constructor(private _ingredientService: IngredientService) {
+      constructor(private service: IngredientService, private alertService : AlertService) {
   
       }
   
-      performFilter(filterBy: string): IIngredient[] {
+      performFilter(filterBy: string): Ingredient[] {
           filterBy = filterBy.toLocaleLowerCase();
-          return this.ingredients.filter((ingredient: IIngredient) =>
+          return this.ingredients.filter((ingredient: Ingredient) =>
           ingredient.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
       }
   
@@ -60,7 +63,7 @@ export class IngredientListComponent implements OnInit {
       }
   
       ngOnInit(): void {
-          this._ingredientService.getIngredients()
+          this.service.getIngredients()
                   .subscribe(ingredients => {
                       this.ingredients = ingredients;
                       this.filteredIngredients = this.ingredients;
@@ -77,9 +80,19 @@ export class IngredientListComponent implements OnInit {
   }
   toggle() {
     this.fadeDirection == 'fadeOut' ? this.fadeIn() : this.fadeOut();
-    console.log('toggle : '+this.fadeDirection);
+    this.toggleImage(); //to update eye image and title
   }
+  delete(id : number){
+    this.service.delete(id)
+    .subscribe(()=> {
+      this.service.getIngredients().subscribe(res => {
+        this.ingredients = res;
+        this.filteredIngredients = this.ingredients;
+        this.alertService.warn("L'ingrédient a bien été supprimé !");
 
+      });
+    });
+  }
      
   }
   
