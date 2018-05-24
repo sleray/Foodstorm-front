@@ -6,6 +6,7 @@ import { FormGroup } from '@angular/forms';
 import { Ingredient, TypeIngredient, GroupeIngredient } from './ingredient';
 import { TypeIngredientService } from '../type-ingredient/type-ingredient.service';
 import { GroupeIngredientService } from '../groupe-ingredient/groupe-ingredient.service';
+import { AlertType } from '../../_models/alert';
 
 @Component({
   selector: 'app-ingredient-create',
@@ -16,22 +17,39 @@ export class IngredientCreateComponent implements OnInit {
 
   pageTitle = "Création d'un ingrédient";
   ngForm: FormGroup;
-  ingredient : Ingredient = new Ingredient();
-  listTypes : TypeIngredient[];
-  listGroupes : GroupeIngredient[];
+  ingredient: Ingredient = new Ingredient();
+  listTypes: TypeIngredient[];
+  listGroupes: GroupeIngredient[];
   constructor(private router: Router, private ingredientService: IngredientService,
     private typeIngredientService: TypeIngredientService,
-    private GroupeIngredientService: GroupeIngredientService,
-    private alertService :AlertService) { }
-  
+    private groupeIngredientService: GroupeIngredientService,
+    private alertService: AlertService) { }
+
 
   ngOnInit() {
     console.log('On init, create ingredient');
     //getting Types and groups lists
+    this.typeIngredientService.getListTypeIngredients()
+      .subscribe(types => {
+        this.listTypes = types;
+      });
+    this.groupeIngredientService.getListGroupeIngredients()
+      .subscribe(groupes => {
+        this.listGroupes = groupes;
+      });
 
   }
 
-  back(){
+  onSubmit() { 
+    console.log("creation d'un ingredient ! "+this.ingredient);
+    this.ingredientService.create(this.ingredient).subscribe(res => {
+      console.log(res);
+      this.alertService.saveAlert(AlertType.Success,"L'ingrédient a bien été créé !");
+      this.router.navigateByUrl("/admin/ingredients");
+    });
+}
+
+  back() {
     console.log("Annulation");
     this.router.navigateByUrl("/admin/ingredients");
   }

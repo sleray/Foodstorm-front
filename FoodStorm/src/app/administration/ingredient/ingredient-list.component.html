@@ -27,12 +27,12 @@
                     <tr>
                         <th>
                             <img *ngIf='showImage'
-                                src='../assets/hideimage.png'
+                                src='./assets/hideimage.png'
                                 title='Hide images'
                                 [style.width.px]='imageWidth'
                                 [style.margin.px]='imageMargin' (click)='toggle()'>
                             <img *ngIf='!showImage'
-                                src='../assets/showimage.png'
+                                src='./assets/showimage.png'
                                 title='Show images'
                                 [style.width.px]='imageWidth'
                                 [style.margin.px]='imageMargin' (click)='toggle()'>                                
